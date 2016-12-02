@@ -1,0 +1,1164 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{cite}
+\usepackage{titlesec}
+\usepackage{inputenc}
+%For numbering%%%
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+%%%%%%%%%%%%%%%%%
+\title{Grand Unified Theories}
+\titleformat{\section}[block]
+  {\fontsize{17.28}{18}\bfseries\sffamily\filcenter}
+  {\thesection}
+  {1em}
+  {}
+\titleformat{\subsection}[hang]
+  {\fontsize{14}{15}\bfseries\sffamily\filcenter}
+  {\thesubsection}
+  {1em}
+  {}
+\titleformat{\subsubsection}[hang]
+  {\fontsize{12}{14}\bfseries\sffamily\filcenter}
+  {\thesubsubsection}
+  {1em}
+  {}
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}
+\addtocounter{section}{1}
+The Standard Model is the current description of fundamental particles, and their interactions via the electroweak and strong forces. While incredibly successful at predicting experimental results, it is far from a final description of nature and is often seen as incomplete. As well as having over 20 free paramaters, the Standard Model is unable to account for a variety of phenomena such as dark matter, neutrino oscillations and the baryon asymmetry of the universe.
+
+Grand Unified Theories, or GUTs, aim to embed the Standard Model symmetries in a single, unified gauge group. They have the potential to solve a variety of phenomena beyond the Standard Model and may be a stepping stone to a final ``Theory Of Everything'' that incorportates gravitiy. This review covers the theoretical background of GUTs and discusses the ongoing work in the field, as well as current experimental constraints on the existance of GUTs.
+
+\clearpage
+\tableofcontents
+\clearpage
+\section{Introduction}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The Standard Model, or SM, represents the cumulative advances in theoretical and experimental particle physics during the second half of the 20th century. It is composed of three distinct sections- two spin $\frac{1}{2}$ families, \textit{leptons} and \textit{quarks}, known as \textit{fermions}, and a family of spin $1$ \textit{gauge bosons} which act as ``force carriers'' and mediate the interactions between particles. The latest addition to the Standard Model, discovered in 2012 at the LHC, is the spin $0$ Higgs boson, a fundamental component in the mechanism by which particles gain mass. 
+
+The Standard Model is described by a set of \textit{gauge groups}, a mathematical formalism from group theory relating to the symmtery of a system. One of the guiding principles behind the Standard Model is that of \textit{gauge invariance}- by invoking that a system should remain invariant under a transformation described by a gauge group, it is possible to infer the existence of extra bosons and their behaviour through the additions of \textit{gauge fields} required to ensure the invariance of the system. This will be discussed in more detail in later sections.
+
+While the Standard Model has been incredibly successful in explaining experimental phenomena, and there are to date no significant disagreements with experimental observations, it is not a final description of nature. The most obvious abscence from the SM is gravity- incorporating it into the Standard Model has proven difficult; General Relativity and the Standard Model appear to be ``fundamentally incompatible'' \cite{GRandSM}. The effect of gravity at currently accessible energy scales at the LHC is negligible, however, meaning its absence does not compromise the results of the Standard Model. At higher energies, however, gravity cannot be neglected- these are the scales at which the Standard Model is predicted to break down. This implies, therefore, that the Standard Model is an effective ``low energy'' approximation to nature, analagous to the relationship between classical mechanics and special relativity.
+
+There are many possible SM extensions that seek to solve some of the questions left unanswered, and attempt to provide an underlying theoretical framework behind the Standard Model; these are diverse in their approach and their predictions, but all currently have no supporting experimental evidence. 
+The extensions that will be the focus of this review are Grand Unified Theories, or GUTs. GUTs are a family of models that seek to unify the forces of the Standard Model in a single gauge group above a certain \textit{unification energy}, resulting in one effective force. The primary motivation for GUTs, aside from a more elegant theoretical description of nature, is that of gauge coupling unification. The coupling parameters, related to the strength of the forces of the Standard Model, are not constant but in fact run with energy. While these forces somewhat miss each other at higher energies, by modifying the Standard Model these coupling parameters can in fact converge. The unification of the Standard Model forces and gauge groups is often seen as a theoretically appealing scenario, leading to a strong push since the 1970s to find a unified description of nature. This review will cover the theoretical background behind GUTs as well as the ongoing work in the field.
+
+Section \ref{sec:intro} gives a brief introduction to the mathematics of group theory, which the Standard Model is based on. 
+Section \ref{sec:SM} introduces the concepts of gauge invariance and spontaneous symmetry breaking, and links these topics into the Standard Model.
+Section \ref{sec:GUT} covers the motivation behind GUTs, and several candidates for a unified description of the Standard Model.
+In section \ref{sec:CouplingUnification}, the idea of gauge coupling unification is discussed, which is one of the primary motivations of GUT models.
+Section \ref{sec:GUTExp} covers ongoing experimental searches for evidence of GUT processes, and the current constraints placed upon them.
+Finally, Section \ref{sec:Conclusion} summarises the content covered during the course of this review.
+
+\subsection{Introduction to Group Theory} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:intro}
+As the Standard Model and Grand Unified Theories are described by the mathematics of group theory, it is necessary to introduce this topic before covering the theoretical background of these physical models. This section will attempt to provide a minimum level of background into group theory before delving into the use of gauge groups to describe nature.
+
+Group theory concerns the symmetry of a system; a group is defined as a mathematical structure composed of a set of elements.
+
+If a group is differentiable by its elements, it is known as a \textit{Lie group}. 
+
+A group such as $U(n)$ or $SU(n)$ ($U$ and $SU$ standing for \textit{unitary} and \textit{special unitary} respectively), in their fundamental representations, are Lie groups of $n\times n$ matrices, although certain higher dimension representations may exist for a particular group. These groups can be described by a set of \textit{parameters} and \textit{generators}, the generators themselves corresponding to individual $n\times n$ matrices in the fundamental representation.
+
+Any transformation $\bm{U}$ under a gauge group can be described in its exponential form
+\begin{equation}
+\label{eqn:expForm}
+\begin{split}
+\bm{U} &= \exp(i\sum\limits_{j=1}^{m}\theta_j \bm{T}_j),
+\end{split}
+\end{equation}
+where $\theta_j$ and $T_j$ represent the $m$ parameters and generators associated with the group.
+
+A complex $n\times n$ matrix such as
+\begin{equation}
+\label{matrix:unitary}
+\left(
+\begin{matrix}
+    a_{11} & ... & ... & a_{1n} \\
+    a_{21} & ... & ... & a_{2n} \\
+    \vdots & \vdots & \vdots & \vdots \\
+    a_{n1} & ... & ... & a_{nn}
+\end{matrix}
+\right)
+\end{equation}
+
+contains $2n^2$ elements. For a unitary matrix $\bm{U}\bm{U}^{\dagger}=1$, meaning that $(\bm{U}\bm{U}^{\dagger})_{ij}=\partial_{ij}$. This leads to $n^2$ equations describing these elements, meaning only $n^2$ unique parameters, and therefore $n^2$ generators, are required to describe a $U(n)$ group. For a special unitary, or $SU(n)$ matrix, there is an additional constrain imposed that the determinant is equal to 1. Therefore, an $SU(n)$ group is composed of $n^2 - 1$ parameters and generators. This is known as the \textit{dimension} of the group.
+
+If the transformation applied by the generators of a group commute, i.e.
+\begin{equation}
+\bm{T}_1\bm{T}_2 = \bm{T}_2\bm{T}_1,
+\end{equation}
+the group is said to be \textit{Abelian}. Later on, it will be seen that non-Abelian groups correspond to force carrying particles that are able to couple to themselves.
+
+In the case of $U(1)$, which only has one generator and parameter, the transformation applied by this group expressed as in Equation (\ref{eqn:expForm}) is of the form $\exp(i\theta T)$. As $T$ is a scalar in this case, the value of the generator can be set to 1, meaning the $U(1)$ is simply a phase change of the form $e^{i\theta}$.
+
+In the case of $SU(2)$, in the fundamtental representation it can be shown that the generators are related to the Pauli matrices by $\bm{T_i} = \frac{\sigma_i}{2}$, i.e. 
+
+\begin{equation}
+\label{eqn:SU2Gen}
+\bm{T}_1 = \frac{1}{2}\left(\begin{matrix}
+0 & 1 \\
+1 & 0
+\end{matrix}\right),\, \bm{T}_2 = \frac{1}{2} \left(
+\begin{matrix}
+0 & -i \\
+i & 0
+\end{matrix}\right),\,\bm{T}_3 = \frac{1}{2}\left(
+\begin{matrix}
+1 & 0 \\
+0 & -1
+\end{matrix}\right).
+\end{equation}
+
+A representation, such as a matrix, may be expressed as function of other representations. If it is not, it is known as an irreducible represenation, or \textit{irrep}. In physics, irreps correspond to states of fundamental particles, and are therefore important when looking at a group. $SU(5)$, for example, contains the irreps $\bm{5}$ and $\bm{10}$, where the number in boldface corresponds to the order of the representation.
+
+\section{Standard Model}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM}
+
+Before discussing Grand Unified Theories, it is necessary to go into the theoretical background behind the Standard Model, and introduce several key concepts that are fundamental to understanding GUTs. Section \ref{sec:SM_aGI} introduces the notion of \textit{gauge invariance} in both the global and local sense for Abelian gauge groups. Section \ref{sec:SM_naGI} extends this to the non-Abelian case. In Section \ref{sec:SM_SSB} spontaneous symmetry breaking is described in the Abelian case, while Section \ref{sec:SM_naSSB} covers this for non-Abelian groups. Section \ref{sec:SM_EWU} combines these ideas to provide a unified theory of the electroweak force. Finally, Section \ref{sec:SM_SM} collates the concepts introduced in this section to describe the current picture of the Standard Model.
+This section is based on the lecture notes in \cite{LecNotes1} and \cite{LecNotes2}.
+\subsection{Abelian Gauge Invariance}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM_aGI}
+The term \textit{gauge invariance} refers to a transformation, such as a phase change, under which the Lagrangian is invariant. A \textit{global} gauge transformation is one that is not dependant on space-time, i.e. the transformation is uniform, for example $\psi\rightarrow\psi e^{i\theta}$. Conversely, a \textit{local} gauge transformation has a space-time component, such as $\psi\rightarrow\psi e^{i\theta(x,t)}$. This section will cover transformations and invariance for the Abelian $U(1)$ gauge group, which corresponds to a simple phase change.
+
+Starting with the Lagrangian density
+
+\begin{equation}
+\label{eqn:abelianLagrangian}
+    \mathcal{L_{\rm{F}}} = \overline{\Psi} (i\gamma^\mu \partial_\mu - m)\Psi,
+\end{equation}
+where $\Psi$ is the Dirac field for a spin $1/2$ fermion and $\overline{\Psi} = \Psi^{\dagger}\gamma_{0}$. Here $\gamma^\mu$ are the four $4\times4$ \textit{gamma matrices},
+\begin{equation}
+\gamma^0 = \left(\begin{matrix}\bm{I}&0\\0&-\bm{I}\end{matrix}\right),\gamma^{k=1,2,3} = \left(\begin{matrix} 0 & \sigma_k \\ -\sigma_k & 0 \end{matrix}\right),
+\end{equation}
+
+
+and $\partial_\mu$ is the four-derivative $(\frac{\partial}{\partial t},\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z})$.
+Applying the global gauge transformation $e^{i\theta}$, the transformed fields become
+
+\begin{equation}
+\label{eqn:abelianGlobalTransformation}
+\Psi\rightarrow\Psi'=\Psi(x,t)e^{i\theta}
+\end{equation}
+and 
+\begin{equation}
+\overline{\Psi}\rightarrow\overline{\Psi}'=e^{-i\theta}\overline{\Psi}(x,t).
+\end{equation}
+
+Substituting the transformed fields into the Lagrangian gives
+
+\begin{equation}
+\label{eqn:transformedLagrangianGlobalAbelian}
+\mathcal{L'} = e^{-i\theta}\overline{\Psi}(x,t)(i\gamma^\mu \partial_\mu - m)\Psi(x,t)e^{i\theta}.
+\end{equation}
+
+As $e^{i\theta}$ is a constant, $\partial_\mu e^{i\theta} = 0$ and $e^{i\theta}$ can be moved to the left hand side of the bracket and cancels with $e^{-i\theta}$. Therefore, the transformed Lagrangian is given by
+\begin{equation}
+\mathcal{L'} = \overline{\Psi} (i\gamma^\mu \partial_\mu - m)\Psi = \mathcal{L}.
+\end{equation}
+
+The transformed Lagrangian is equal to the original Lagrangian, therefore it can be said to be invariant under the global $U(1)$ phase transformation $e^{i\theta}$.
+
+Next, the transformation is promoted to a local (i.e. space-time dependant) transformation $e^{i\theta(x,t)}$ and is applied to the field through the transformations
+
+\begin{equation}
+\label{eqn:abelianLocalTransformation}
+\Psi\rightarrow\Psi'=\Psi(x,t)e^{i\theta(x,t)}
+\end{equation}
+
+and
+
+\begin{equation}
+\overline{\Psi}\rightarrow\overline{\Psi}'=e^{-i\theta(x,t)}\overline{\Psi}(x,t).
+\end{equation}
+
+The transformed Lagrangian now becomes
+
+\begin{equation}
+\mathcal{L'} = e^{-i\theta(x,t)}\overline{\Psi}(x,t)(i\gamma^\mu \partial_\mu - m)\Psi(x,t)e^{i\theta(x,t)}.
+\end{equation}
+
+As $\partial_\mu e^{i\theta(x,t)}\neq 0$, the transformation does not cancel out in the Lagrangian as in equation (\ref{eqn:transformedLagrangianGlobalAbelian}), instead giving
+
+\begin{equation}
+\begin{split}
+\mathcal{L'} &= e^{-i\theta}\overline{\Psi}(i \gamma^\mu e^{i\theta} \partial_\mu \Psi -\gamma^\mu \Psi e^{i\theta} \partial_\mu \theta - m\Psi e^{i\theta}) \\
+&=\overline{\Psi}(i\gamma^\mu \partial_\mu - m)\Psi - \overline{\Psi}\gamma^\mu\Psi \partial_\mu \theta \\
+&= \mathcal{L} + \Delta \mathcal{L}.
+\end{split}
+\end{equation}
+
+Therefore, the Lagrangian in not invariant under the local $U(1)$ transformation. However, by modifying the Lagrangian by introducing the covariant derivative $D_\mu$,
+
+\begin{equation}
+\mathcal{L} = \overline{\Psi}(i\gamma^\mu D_\mu -m)\Psi
+\end{equation}
+
+where 
+
+\begin{equation}
+D_\mu = \partial_\mu + ieA_\mu,
+\end{equation}
+and requiring that the gauge field $A_\mu$ transforms as
+\begin{equation}
+A_\mu \rightarrow A_\mu' = A_\mu - \frac{1}{e}\partial_\mu \theta,
+\end{equation}
+the Lagrangian now transforms as
+\begin{equation}
+\begin{split}
+\mathcal{L'} &= e^{-i\theta}\overline{\Psi}(i\gamma^\mu (\partial_\mu + ieA_\mu - i\partial_\mu \theta) -m)\Psi e^{i\theta} \\
+&=e^{-i\theta} \Psi (i\gamma^\mu (e^{i\theta}\partial_\mu \Psi + i\Psi e^{i\theta}\partial_\mu \theta + ieA_\mu \Psi e^{i\theta} - i\Psi e^{i\theta}\partial_\mu \theta ) - m\Psi e^{i\theta}) \\
+&=\overline{\Psi}(i\gamma^\mu(\partial_\mu +ieA_\mu) - m)\Psi =\overline{\Psi}(i\gamma^\mu D_\mu -m)\Psi \\
+& = \mathcal{L}.
+\end{split}
+\end{equation}
+Therefore, with the addition of the gauge field $A_\mu$, the Lagrangian is now gauge invariant under the local $U(1)$ transformation $e^{i\theta(x,t)}$. The introduction of a gauge field requires a corresponding massless gauge boson- this can be interpreted as the photon, with $A_\mu$ corresponding to the photon field and $e$ the coupling constant associated with the transformation, equal to the charge of the electron.
+The field strength tensor, needed in the Lagrangian to form a more complete field theory, is defined as 
+\begin{equation}
+    F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.
+\end{equation}
+In order to be able to retrieve the Maxwell equations from this Lagrangian a factor of $-\frac{1}{4}$ is introduced. Therefore, the Lagrangian density arrives at
+\begin{equation}
+\mathcal{L} = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} + \overline{\Psi}(i\gamma^\mu D_\mu -m)\Psi.
+\end{equation}
+In order for the Lagrangian to remain gauge invariant, a mass term $M^2A_\mu A^\mu$ for example cannot be added as this would lead to a change in the Lagrangian $\Delta \mathcal{L}$. Therefore, the masslessness of the gauge boson associated with the introduced gauge field is a consequence of maintaining gauge invariance. It will be seen in Section \ref{sec:SM_SSB} however that it is possible to introduce mass to the gauge bosons through the process of spontaneous symmetry breaking.
+\subsection{Non-Abelian Gauge Invariance}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM_naGI}
+In the mid 1950s, Yang and Mills demonstrated that the concept of gauge invariance could be extended to the non-Abelian case \cite{YangMillsTheory}, and is one of the foundations of the Standard Model. Non-Abelian gauge theories, also known as \textit{Yang-Mills} theories, follow the same procedure as the previous section, but also introduce the caveats of non-commuting, non-scalar generators.
+
+In the following section, Einstein summation convention is used- i.e. if an index variable appears twice in a term, it is implicitly assumed that the index is summed over for all possible values. Using this, equation (\ref{eqn:expForm}) could be written in the form
+
+\begin{equation}
+\bm{U} = \exp(i\theta_j \bm{T}_j).
+\end{equation}
+
+For higher order groups, there exist multiple generators and gauge fields. Taking the fermion field $\Psi$ to now be a multiplet of length n, represented as
+
+\begin{equation}
+\label{matrix:femionMultiplet}
+\Psi = 
+\left(
+\begin{matrix}
+    \Psi_1  \\
+    \Psi_2  \\
+    ...     \\
+    \Psi_n
+\end{matrix}
+\right),
+\end{equation}
+
+the fermion field now transforms as 
+
+\begin{equation}
+\label{eqn:nonAbelianFermionFieldTransformation}
+\Psi\rightarrow\Psi'=\bm{U}\Psi,
+\end{equation}
+and 
+\begin{equation}
+\overline{\Psi}\rightarrow\overline{\Psi}' = \overline{\Psi}\bm{U}^\dagger.
+\end{equation}
+
+The Lagrangian density for this multiplet for this is 
+
+\begin{equation}
+\begin{split}
+\mathcal{L} & = \overline{\Psi}^j(i \gamma^\mu \partial_\mu -m )\Psi_j \\
+& = \overline{\Psi}^1 (i \gamma^\mu \partial_\mu - m)\Psi_1 + \overline{\Psi}^2 (i \gamma^\mu \partial_\mu - m)\Psi_2 + ...\,\,\,\,\,\,.
+\end{split}
+\end{equation}
+
+Applying a local gauge transformation to this Lagrangian under a unitary group $\bm{U}$ yields
+
+\begin{equation}
+\label{eqn:localNonAbelianLagrangian}
+\begin{split}
+\mathcal{L}\rightarrow\mathcal{L'} & = \overline{\Psi}^j \bm{U}^\dagger (i\gamma^\mu \partial_\mu - m)\bm{U}\Psi_j \\
+& = \overline{\Psi}^j \bm{U}^\dagger(i \gamma^\mu (\bm{U}\partial_\mu \Psi_j + \Psi_j \partial_\mu \bm{U}) - m\bm{U}\Psi_j) \\
+& = \overline{\Psi}^j (i \gamma^\mu \partial_\mu - m)\Psi_j + \overline{\Psi}^j \bm{U}^\dagger i \gamma^\mu \Psi_j (\partial_\mu \bm{U}) \\
+& = \mathcal{L} + \Delta \mathcal{L}.
+\end{split}
+\end{equation}
+
+Therefore, the Lagrangian is not invariant under a local gauge transformation.
+As in the previous section, in order to overcome the non-invariance of the Lagrangian the gauge covariant derivative is introduced,
+
+\begin{equation}
+\label{eqn:nonAbelianCovariantDeriative}
+\bm{D}_\mu = \partial_\mu + i g \bm{A}_\mu,
+\end{equation}
+
+where $\bm{A}_\mu$ is given by 
+
+\begin{equation}
+\label{eqn:nonAbelianGaugeFieldDefinition}
+\bm{A}_\mu = \bm{T}^j  A^{j}_\mu
+\end{equation}
+
+and $\bm{A}_\mu$ transforms as 
+
+\begin{equation}
+\label{eqn:nonAbelianGaugeFieldTransformation}
+\begin{split}
+\bm{A}_\mu \rightarrow \bm{A}_\mu' &= \bm{U}\bm{A}_\mu\bm{U}^\dagger + \frac{i}{g}(\partial_\mu \bm{U} )\bm{U}^\dagger.
+\end{split}
+\end{equation}
+
+Introducing this covariant derivative, the Lagrangian now transforms as
+
+\begin{equation}
+\begin{split}
+\mathcal{L}\rightarrow\mathcal{L'} &  = \overline{\Psi}^j \bm{U}^\dagger \left( i \gamma^\mu [\partial_\mu + ig\bm{A}_\mu] - m \right)\bm{U}\Psi_j \\
+& = \overline{\Psi}^j \bm{U}^\dagger \left( i \gamma^\mu \left[\partial_\mu +ig\left(\bm{U}\bm{A}_\mu\bm{U}^\dagger + \frac{i}{g}(\partial_\mu \bm{U})\bm{U}^\dagger\right)\right] - m  \right)\bm{U}\Psi_j \\
+& = \overline{\Psi}^j \bm{U}^\dagger \left( i \gamma^\mu \left[ \bm{U}\partial_\mu\Psi_j + ig\bm{U}\bm{A}_\mu\Psi_j \right] - m \bm{U}\Psi_j \right)\\
+& = \overline{\Psi}^j \left( i \gamma^\mu \left[ \partial_\mu + ig\bm{A}_\mu \right] - m \right)\Psi_j = \mathcal{L}.
+\end{split}
+\end{equation}
+
+Therefore, the Lagrangian is now invariant under a general non-Abelian gauge transformation. 
+
+In the case of an $SU(2)$ transformation, there are 3 generators associated with the group. Therefore, the matrix $\bm{A}_\mu$ can be expanded out, expressing the covariant derivative as
+
+\begin{equation}
+\bm{D}_\mu = \bm{I}\partial_\mu + ig(\bm{T}^1 A^{1}_\mu + \bm{T}^2 A^{2}_\mu + \bm{T}^3 A^{3}_\mu).
+\end{equation}
+
+As seen in Equation (\ref{eqn:SU2Gen}), the generators associated with $SU(2)$ are proportional to the Pauli matrices. Using the standard convention for $SU(2)$ by relabeling the gauge bosons to $W^{1}_\mu$,$W^{2}_\mu$ and $W^{3}_\mu$ respectively, the covariant derivative now becomes
+
+
+\begin{equation}
+\begin{split}
+\bm{D}_\mu & = \bm{I}\partial_\mu + \frac{ig}{2}\left( \left(
+\begin{matrix}
+0 & 1 \\
+1 & 0
+\end{matrix}\right) W^{1}_\mu + \left(
+\begin{matrix}
+0 & -i \\
+i & 0
+\end{matrix}\right)W^{2}_\mu + \left(
+\begin{matrix}
+1 & 0 \\
+0 & -1
+\end{matrix}\right)W^{3}_\mu
+\right) \\
+& = \left(
+\begin{matrix}
+\partial_\mu + \frac{ig}{2}W^{3}_\mu & \frac{ig}{2}(W^1 -iW^2 ) \\
+\frac{ig}{2}(W^1 + iW^2) & \partial_\mu - \frac{ig}{2}W^3
+\end{matrix} \right).
+\end{split}
+\end{equation}
+
+It will be seen later that the charged W boson can be expressed by $W^{\pm} = \frac{(W^1 \mp iW^2)}{\sqrt{2}}$. These bosons associated with the 3 gauge fields are predicted to be massless; however, this would indicate that the weak force should have an infinite range. The fact that the contrary is observed in nature means the W and Z bosons should in fact be massive. Manually adding mass terms of the form $M^2A_\mu A^\mu$ breaks gauge invariance and removes the theory's renormalisability (the ability to cancel divergent terms, allowing the theory to make useful physical predictions). Therefore, a more subtle approach is required to give these bosons masses. It will be seen in the next section that this can be achieved through the process of spontaneous symmetry breaking.
+\subsection{Spontaneous Symmetry Breaking}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM_SSB}
+
+In an unbroken gauge theory, there exist a number of massless gauge bosons, each corresponding to a field introduced in order to maintain gauge invariance. However, experimental evidence shows that the weak force has a limited range, indicating the associated force carriers should have a non-zero mass. This section will cover spontaneous symmetry breaking, the process responsible for giving the $W$ and $Z$ bosons their mass. More specifically, this section covers the Abelian case of the Higgs model, introduced in 1971 by Peter Higgs \cite{HiggsMechanism}.
+
+A common analogy to illustrate spontaneous symmetry breaking is that of a ferromagnetic system. Above a critical temperature $T_c$, the magnetic spins of a series of atoms point in random directions. The system is invariant under rotation due to the disordered atoms as there is no preferred direction. However, as the temperature drops below $T_c$, the magnetic spins all align in some arbitrary direction. Each direction is equally valid, however the system must ``choose'' a direction in which to align, breaking the symmetry.
+
+The ground state, or vacuum state, is mathematically represented as the ket $\ket{0}$. Any generator that satisfies the equation
+
+\begin{equation}
+\bm{T}^a\ket{0} = 0,
+\end{equation}
+
+i.e. the generator acting on the ground state ket is equal to the null vector, is said to \textit{annihilate} the vacuum. If a generator of a gauge group does not annihilate the vacuum, the gauge symmetry is spontaneously broken.
+
+Starting with a Lagrangian of the form
+
+\begin{equation}
+\label{eqn:ssbLagr}
+\mathcal{L} = (D_\mu \Phi)^* D^\mu \Phi - V(\Phi),
+\end{equation}
+
+where the potential $V(\Phi)$ is given by
+
+\begin{equation}
+\begin{split}
+V(\Phi) & = \mu^2 \Phi^*\Phi + \lambda|\Phi^*\Phi|^2 \\
+& = \mu^2 |\Phi|^2 + \lambda|\Phi|^4,
+\end{split}
+\end{equation}
+where $\mu$ is a mass term, and $\lambda$ is some parameter assumed to be greater than 0 to ensure a stable solution.
+The gradient of the potential field is given by
+
+\begin{equation}
+\label{eqn:vacSolns}
+\begin{split}
+\frac{\partial V}{\partial |\Phi|} & = 2\mu^2|\Phi| + 4\lambda|\Phi|^3 \\
+\end{split}
+\end{equation}
+
+and
+
+\begin{equation}
+\label{eqn:vacuumDerivative2}
+\begin{split}
+\frac{\partial^2 V}{\partial |\Phi|^2} & = 2\mu^2 + 12\lambda|\Phi|^2.
+\end{split}
+\end{equation}
+
+Therefore, from Equation (\ref{eqn:vacSolns}) there exists a stationary point at $|\Phi| = 0$. From Equation (\ref{eqn:vacuumDerivative2}), it can be seen that if $\mu^2>0$, $\frac{\partial^2 V}{\partial |\Phi|^2}>0$ and this stationary point is a minima. The vacuum expectation of this field is zero and the Lagrangian describes two real particles with mass $\frac{\mu}{\sqrt{2}}$.
+
+If $\mu^2<0$, however, this point is a local maxima; there also now exists a solution
+
+\begin{equation}
+\begin{split}
+|\Phi| & = \sqrt{\frac{-\mu^2}{2\lambda}}, \\
+\therefore\Phi & = e^{i\theta}\sqrt{\frac{|\mu^2|}{2\lambda}}\equiv e^{i\theta}\frac{v}{\sqrt{2}},
+\end{split}
+\end{equation}
+
+where $\theta$ exists between $0$ and $2\pi$, this being a minima. This corresponds to an infinite number of ground state solutions. One value of $\theta$ must be chosen to be the ``true'' vacuum- this choice is the spontaneous breaking of the symmetry. For simplicity $\theta = 0$ is taken to be the true vacuum state. The expectation value of the vacuum is now
+
+\begin{equation}
+\left< \Phi \right> = \frac{v}{\sqrt{2}}.
+\end{equation}
+
+This field is visualised in Figure (\ref{fig:vacuum}).
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{images/vacuum.png}
+    \caption{The vacuum field for $\mu^2$ greater and less than zero\label{fig:vacuum}}
+\end{figure}
+
+
+As $\phi$ is a complex field, it can be expanded in terms of its real and imaginary components 
+
+\begin{equation}
+\label{eqn:vevExpnd}
+\Phi = \frac{1}{\sqrt{2}}\left( \frac{\mu}{\sqrt{\lambda}} + H + i\phi \right),
+\end{equation}
+where $H$ and $i\phi$ are the real and imaginary components of $\Phi$ respectively.
+Substituting this into the equation for the potential gives
+
+\begin{equation}
+    V = \mu^2 H^2 + \mu\sqrt{\lambda}(H^3 + \phi^2 H) + \frac{\lambda}{4}(H^4 + \phi^4 + 2H^2\phi^2) + \frac{\mu^4}{4\lambda},
+\end{equation}
+
+where the term $\mu^2 H^2$ indicates there is a mass of $\mu$ for the $H$ field. As there is no $\phi^2$ term, this means that the boson corresponding to $\phi$ is massless, and is known as a \textit{Goldstone boson}\cite{GoldstoneTheorem}. There exists a Goldstone boson for each broken generator of a group.
+
+As in Section \ref{sec:SM_aGI}, a local $U(1)$ gauge group is demonstrated, in this case to investigate spontaneous symmetry breaking. Substituting in the expansion for $\Phi$ in Equation (\ref{eqn:vevExpnd}) into the covariant derivative yields
+
+\begin{equation}
+D_\mu\phi = \left(\partial_\mu + igA_\mu\right)\left( \frac{1}{\sqrt{2}}(v+H+i\phi)\right).
+\end{equation}
+
+Reintroducing the covariant derivative $D_\mu \Phi = (\partial_\mu + ig A_\mu)\Phi$ and the field kinetic term, the Lagrangian from Equation (\ref{eqn:ssbLagr}) is now given by
+
+\begin{equation}
+    \mathcal{L} = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} + (D_\mu \Phi)^* D^\mu \Phi - V(\Phi)
+\end{equation}
+
+The term $(D_\mu \Phi)^* D^\mu \Phi$ expands out as
+
+\begin{equation}
+\begin{split}
+(D_\mu \Phi)^* D^\mu \Phi & = \frac{1}{2}\left(\partial^\mu H - i\partial^\mu\phi - igvA^\mu - igHA^\mu - gA^\mu\phi\right) \\
+&\times\left( \partial_\mu H + i\partial_\mu\phi + igvA_\mu + igHA_\mu - gA_\mu\phi \right) \\
+& = \frac{1}{2}\left( \partial^\mu H \partial_\mu H + \partial^\mu\phi\partial_\mu\phi + g^2v^2A^\mu A_\mu + g^2A^\mu A_\mu(H^2 + \phi^2) \right)\\
+&+\frac{1}{2}\left( -g(A_\mu(\phi\partial^\mu H + H\partial^\mu\phi) + A^\mu(\phi\partial_\mu H + H\partial_\mu\phi))\right) \\
+& + \frac{1}{2}(gv+gH)(A_\mu \partial^\mu\phi + A^\mu\partial_\mu\phi) + g^2vHA^\mu A_\mu 
+\end{split}
+\end{equation}
+
+From the term $\frac{g^2v^2}{2}A^\mu A_\mu$ it can be seen that the boson corresponding to the gauge field $A_\mu$ picks up a mass term proportional to $gv$.
+
+There also exists a ``mixing term'' $gvA_\mu\partial^\mu\phi$ in which the Goldstone boson $\phi$ mixes with the longitudinal component of the gauge boson. The boson is `eaten up' to provide a third degree of freedom that allows the gauge boson to have mass. 
+\subsection{Non-Abelian Spontaneous Symmetry Breaking}%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM_naSSB}
+Extending this process to the non-Abelian group $SU(2)$ under a complex doublet field $\Phi^i$, the vacuum expectation value is chosen such that
+
+\begin{equation}
+\langle\Phi\rangle = \frac{1}{\sqrt{2}}\left(\begin{matrix}
+0 \\
+v \\
+\end{matrix}\right).
+\end{equation}
+As there are no $SU(2)$ generators that annihilate the vacuum, there will be 3 associated Goldstone bosons.
+
+
+Expanding $\Phi^i$ around the expectation value again gives
+
+\begin{equation}
+\begin{split}
+\Phi = \frac{1}{\sqrt{2}}\left(
+\begin{matrix}
+\phi_1 - i\phi_2 \\
+v + H + i\phi_0
+\end{matrix}\right)
+\end{split}
+\end{equation}
+where $\phi_i$ are the Goldstone bosons associated with the $SU(2)$ group. These Goldstone bosons will be set to zero in the unitary gauge.
+
+The covariant derivative is chosen such that
+
+\begin{equation}
+\begin{split}
+\bm{D}_\mu \Phi & = \partial_\mu \Phi + igW^{\alpha}_\mu \bm{T}^\alpha \Phi \\
+& = \partial_\mu \Phi + \frac{ig}{2}\left( W^{1}_\mu \left(
+\begin{matrix}
+0 & 1 \\
+1 & 0 \\
+\end{matrix}\right) + W^{2}_\mu \left(
+\begin{matrix}
+0 & -i \\
+i & 0 \\
+\end{matrix}\right) + W^{3}_\mu \left(
+\begin{matrix}
+1 & 0 \\
+0 & -1 \\
+\end{matrix}\right)\right)\Phi\\
+& = \frac{\partial_\mu}{\sqrt{2}}\left(\begin{matrix}
+0 \\
+v + H
+\end{matrix}\right) + \frac{ig}{2}\left(\begin{matrix}
+W^{3}_\mu & W^{1}_\mu -iW^{2}_\mu \\
+W^{1}_\mu + iW^{2}_\mu & -W^{3}_\mu\\
+\end{matrix}\right)\left(\begin{matrix}
+0 \\
+v + H
+\end{matrix}\right).
+\end{split}
+\end{equation}
+
+In order to follow the convention of $SU(2)$, the gauge fields $A_\mu$ have been renamed to $W_\mu$.
+
+By defining $W^{3}_\mu = W^{0}_\mu$ and $W^{\pm}_\mu = \frac{1}{\sqrt{2}}(W^{1}_\mu \mp iW^{2}_\mu)$, the covariant derivative now becomes
+
+\begin{equation}
+\label{eqn:NASSBCD}
+\begin{split}
+\bm{D}_\mu \Phi& = \frac{\partial_\mu}{\sqrt{2}}\left(\begin{matrix}
+0 \\
+H
+\end{matrix}\right) + \frac{ig}{2}\left(\begin{matrix}
+W^{0}_\mu & \sqrt{2}W^{+}_\mu \\
+\sqrt{2}W^{-}_\mu & -W^{0}_\mu\\
+\end{matrix}\right)\left(\begin{matrix}
+0 \\
+v + H
+\end{matrix}\right)\\
+& = \frac{\partial_\mu}{\sqrt{2}}\left(\begin{matrix}
+0 \\
+H
+\end{matrix}\right) + \frac{ig}{2}\left(\begin{matrix}
+\sqrt{2}W^{+}_\mu(v+H) \\
+-W^{0}_\mu(v+H)\\
+\end{matrix}\right).\\
+\end{split}
+\end{equation}
+
+Noting that $\overline{W^{+}_\mu} = W^{-\,\mu}$, $|\bm{D}_\mu\Phi|^2$ becomes
+
+\begin{equation}
+\begin{split}
+|\bm{D}_\mu\Phi|^2 & =  \left( \frac{\partial^\mu}{\sqrt{2}}\left(\begin{matrix}
+0 & H
+\end{matrix}\right) - \frac{ig}{2}\left(\begin{matrix}
+\sqrt{2}W^{-\,\mu}(v+H) & -W^{0\,\mu}(v+H)\\
+\end{matrix}\right)\right)\left(\frac{\partial_\mu}{\sqrt{2}}\left(\begin{matrix}
+0 \\
+H
+\end{matrix}\right) + \frac{ig}{2}\left(\begin{matrix}
+\sqrt{2}W^{+}_\mu(v+H) \\
+-W^{0}_\mu(v+H)\\
+\end{matrix}\right)\right) \\
+& = \frac{1}{2}\partial^\mu H \partial_\mu H + \frac{g^2 (v+H)^2}{4}(2W^{-\,\mu}W^{+}_\mu + W^{0\,\mu}W^{0}_\mu)\\
+& = \frac{1}{2}\partial^\mu H \partial_\mu H + \frac{g^2v^2}{4}(2W^{-\,\mu}W^{+}_\mu + W^{0\,\mu}W^{0}_\mu) + \frac{g^2H^2}{4}(2W^{-\,\mu}W^{+}_\mu + W^{0\,\mu}W^{0}_\mu) \\
+& + \frac{g^2vH}{2}(2W^{-\,\mu}W^{+}_\mu + W^{0\,\mu}W^{0}_\mu).
+\end{split}
+\end{equation}
+
+By substituting $W^{\pm}_\mu = \frac{1}{\sqrt{2}}(W^{1}_\mu \mp iW^{2}_\mu)$ into the second (mass) term, this expands out as
+
+\begin{equation}
+\begin{split}
+& \frac{g^2v^2}{4}\left( 2\frac{1}{2}(W^{1\,\mu}+iW^{2\,\mu})(W^{1}_\mu - iW^{2}_\mu) + W^{0\,\mu}W^{0}_\mu\right) \\ 
+& = \frac{g^2v^2}{4}(W^{1\,\mu}W^{1}_\mu + W^{2\,\mu}W^{2}_\mu + W^{0\,\mu}W^{0}_\mu).
+\end{split}
+\end{equation}
+
+Therefore, each gauge boson acquires a mass term of $gv$.
+
+\subsection{Spontaneous Breaking of the Electroweak Group}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM_EWU}
+The work of Weinberg, Salam and Glashow in the 1960s unified the electromagnetic and weak forces to form the electroweak theory\cite{EWUWeinberg}, \cite{EWUGlashow}, also known as the GWS theory of electroweak interactions. This section modifies the case of non-Abelian spontaneous symmetry breaking in the previous section to cover the breaking of the $SU(2)_L \otimes U(1)_Y$ electroweak gauge group to the electromagnetic $U(1)_{\rm{em}}$ group.
+
+Adjusting the covariant derivative in Equation (\ref{eqn:NASSBCD}) to include the $U(1)_Y$ generators for a hypercharge of the $\Phi$ field $Y=\frac{1}{2}$, $\bm{D}_\mu\Phi$ now becomes
+
+\begin{equation}
+\begin{split}
+\bm{D}_\mu \Phi & = \left( \bm{I} \partial_\mu + ig\bm{T}^iW^{i}_\mu + ig'Y\bm{I}B_\mu  \right)\Phi\\
+& = \left( \bm{I} \partial_\mu + \frac{ig}{2}\sigma^iW^{i}_\mu + \frac{ig'}{2}\bm{I}B_\mu  \right)\Phi
+\end{split}
+\end{equation}
+where $\bm{I}$ is the identity matrix, $g$ and $g'$ are gauge couplings of the $SU(2)_C$ and $U(1)_Y$ groups respectively, and $B_\mu$ is the $U(1)_Y$ gauge field.
+
+Substituting in the Pauli matrices and using the same field expansion as in the previous section gives 
+
+\begin{equation}
+\begin{split}
+\bm{D}_\mu \Phi &= \frac{1}{\sqrt{2}}\left(\bm{I}\partial_\mu+ \frac{ig}{2}\left(\begin{matrix}
+W^{0}_\mu & \sqrt{2}W^{+}_\mu \\
+\sqrt{2}W^{-}_\mu & -W^{0}_\mu\\
+\end{matrix}\right) + \frac{ig'}{2}\bm{I}B_\mu\right)\left(\begin{matrix}
+0 \\
+v + H\\
+\end{matrix}\right) \\
+& = \frac{1}{\sqrt{2}}\left(  \begin{matrix}
+\partial_\mu + \frac{ig}{2}W^{0}_\mu + \frac{ig'}{2}B_\mu & \frac{ig\sqrt{2}}{2}W^{+}_\mu \\
+\frac{ig\sqrt{2}}{2}W^{-}_\mu & \partial_\mu - \frac{ig}{2}W^{0}_\mu + \frac{ig'}{2}B_\mu
+\end{matrix}\right)\left(\begin{matrix}
+0 \\
+v + H
+\end{matrix}\right) \\
+& = \frac{1}{\sqrt{2}}\left(\begin{matrix}
+\frac{ig\sqrt{2}}{2}W^{+}_\mu (v+H)\\
+\partial_\mu H + \left(-\frac{ig}{2}W^{0}_\mu  + \frac{ig'}{2}B_\mu\right)(v+H)
+\end{matrix}\right).
+\end{split}
+\end{equation}
+
+Substituting this into $|\bm{D}_\mu\Phi|^2$ again yields
+
+\begin{equation}
+\begin{split}
+|\bm{D}_\mu\Phi|^2 & = \frac{1}{2}\left(\begin{matrix}
+-\frac{ig\sqrt{2}}{2}W^{-\,\mu} (v+H) & 
+\partial^\mu H + \left(\frac{ig}{2}W^{0\,\mu}  - \frac{ig'}{2}B^\mu\right)(v+H)
+\end{matrix}\right)\\
+&\times\left(\begin{matrix}
+\frac{ig\sqrt{2}}{2}W^{+}_\mu (v+H)\\
+\partial_\mu H + \left(-\frac{ig}{2}W^{0}_\mu  + \frac{ig'}{2}B_\mu\right)(v+H)
+\end{matrix}\right) \\
+& = \frac{g^2}{4}W^{-\,\mu}W^{+}_\mu(v+H)^2 + \frac{1}{2}\partial^\mu H \partial_\mu H + (v+H)^2 \left( \frac{g^2}{8}W^{0\,\mu}W^{0}_\mu + \frac{g'^2}{8}B^\mu B_\mu - \frac{gg'}{4}W^{0\mu}B_\mu \right) \\
+& = \frac{1}{2}\partial^\mu H \partial_\mu H + \frac{g^2v^2}{4}W^{-\,\mu}W^{+}_\mu + \frac{g^2}{4}(H^2 + 2vH)W^{-\,\mu}W^{+}_\mu  + \frac{(v+H)^2}{8}(gW^{0\,\mu} - g' B^\mu)^2 \\
+& = \frac{1}{2}(\partial^\mu H)^2 + \frac{g^2v^2}{4}W^{-\,\mu}W^{+}_\mu + \frac{g^2}{4}(H^2 + 2vH)W^{-\,\mu}W^{+}_\mu \\
+& + \frac{v^2}{8}(gW^{0\,\mu} - g' B^\mu)^2 + \frac{(H^2 + 2vH)}{8}(gW^{0\,\mu} - g' B^\mu)^2.
+\end{split}
+\end{equation}
+
+Therefore, the charged bosons have a mass term $M_{W^{\pm}} = \frac{gv}{2}$. There is also a mass term for the superposition of $B_\mu$ and $W^{0}_\mu$ terms $(gW^{0\,\mu} - g' B^\mu)$.
+
+The superpostion of these states can be diagonalised by
+
+\begin{equation}
+\begin{split}
+\left( \begin{matrix}A_\mu \\ Z_\mu\end{matrix}\right) & = \left(\begin{matrix} 
+\cos\theta_{\rm{W}} & \sin\theta_{\rm{W}} \\
+-\sin\theta_{\rm{W}} & \cos\theta_{\rm{W}}
+\end{matrix}\right) \left( \begin{matrix}
+B_\mu \\ W^{0}_\mu\end{matrix} \right), \\
+\rm{i.e.}\,\, A_\mu & = \cos\theta_{\rm{W}} B_\mu + \sin\theta_{\rm{W}}W^{0}_\mu, \\
+Z_\mu & = -\sin\theta_{\rm{W}} B_\mu + \cos\theta_{\rm{W}}W^{0}_\mu,
+\end{split}
+\end{equation}
+
+where $\theta_{\rm{W}}$ is known as the \textit{weak mixing angle}. $Z_\mu$ and $A_\mu$ can be identified as the $Z$ boson and photon, respectively. Rearranging in terms of the $B_\mu$ and $W^{0}_\mu$ gives
+
+\begin{equation}
+\begin{split}
+B_\mu & = \cos\theta_{\rm{W}} A_\mu - \sin\theta_{\rm{W}}Z_\mu, \\
+W^{0}_\mu & = \sin\theta_{\rm{W}} A_\mu + \cos\theta_{\rm{W}}Z_\mu. \\
+\end{split}
+\end{equation}
+
+The ratio of the charges $g$ and $g'$ is given by 
+
+\begin{equation}
+\tan\theta_{\rm{W}} = \frac{g'}{g}.
+\end{equation}
+
+While the individual generators do not annihilate the vacuum, a combination of $Y$ and $\bm{T}^{3}$ does. This combination is 
+
+\begin{equation}
+\begin{split}
+\left( \bm{I}Y + \bm{T}^3 \right)\left(\begin{matrix}0 \\ \frac{v}{\sqrt{2}} \end{matrix}\right) & = \left(\left(\begin{matrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{matrix}\right) + \left(\begin{matrix}\frac{1}{2} & 0 \\ 0 & \frac{-1}{2}\end{matrix}\right)\right)\left(\begin{matrix}0 \\ \frac{v}{\sqrt{2}}\end{matrix}\right) \\
+& = \left( \begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix} \right)\left(\begin{matrix}0\\            \frac{v}{\sqrt{2}}\end{matrix} \right) = 0.
+\end{split}
+\end{equation}
+
+Substituting the equations for the $B_\mu$ and $W^{0}_\mu$ in terms of the weak mixing angle for the Higgs field,
+
+\begin{equation}
+\begin{split}
+\bm{D}_\mu \Phi = & \bm{I}\partial_\mu + ig'\bm{I}YB_\mu + ig(\bm{T}^1W^{1}_\mu +\bm{T}^2 W^{2}_\mu) + ig\bm{T}^3 W^{0}_\mu \\
+= & \bm{I}\partial_\mu + ig'\bm{I}Y(\cos\theta_{\rm{W}}A_\mu - \sin\theta_{\rm{W}}Z_\mu) + ig\bm{T}^3(\sin\theta_{\rm{W}}A_\mu + \cos\theta_{\rm{W}}Z_\mu) \\
+& + \frac{ig}{2}\left(\begin{matrix} 0 & \sqrt{2}W^{+}_\mu \\ \sqrt{2}W^{-}_\mu & 0 \end{matrix}\right)\\
+= & \bm{I}\partial_\mu + ig\bm{I}Y\tan\theta_{\rm{W}}(\cos\theta_{\rm{W}}A_\mu - \sin\theta_{\rm{W}}Z_\mu) + ig\bm{T}^3(\sin\theta_{\rm{W}}A_\mu + \cos\theta_{\rm{W}}Z_\mu) + ...\\
+= & \bm{I}\partial_\mu + ig\bm{I}Y(\sin\theta_{\rm{W}}A_\mu - \tan\theta_{\rm{W}}\sin\theta_{\rm{W}}Z_\mu) + ig\bm{T}^3(\sin\theta_{\rm{W}}A_\mu + \cos\theta_{\rm{W}}Z_\mu) + ... \\
+= & \bm{I}\partial_\mu + ig\sin\theta_{\rm{W}}(\bm{I}Y+\bm{T}^3)A_\mu + ig(\cos\theta_{\rm{W}}\bm{T}^3 - \bm{I}Y\tan\theta_{\rm{W}}\sin\theta_{\rm{W}})Z_\mu \\
+& + \frac{ig}{2}\left(\begin{matrix} 0 & \sqrt{2}W^{+}_\mu \\ \sqrt{2}W^{-}_\mu & 0 \end{matrix}\right).\\
+\end{split}
+\end{equation} 
+
+From this covariant derivative, it can be seen that the generator attached to the $A_\mu$ boson is $\bm{I}Y+\bm{T}^3$. As seen earlier, this is an unbroken generator, meaning the photon is the only massless gauge boson upon the breaking of the electroweak group. The generator can be expressed as a single charge
+
+\begin{equation}
+g\sin\theta_{\rm{W}}(\bm{I}Y + \bm{T}^3)A_\mu = eQA_\mu,
+\end{equation}
+
+leading to the equation 
+
+\begin{equation}
+\sin\theta_{\rm{W}} = \frac{e}{g}.
+\end{equation}
+
+Therefore, the breaking of the $SU(2)_L \otimes U(1)_Y$ group results in four bosons made up of combinations of the electroweak bosons $W^{i}_\mu$ and $B _\mu$, expressed as
+
+\begin{equation}
+\begin{split}
+A_\mu & = \cos\theta_{\rm{W}} B_\mu + \sin\theta_{\rm{W}}W^{0}_\mu, \\
+Z_\mu & = -\sin\theta_{\rm{W}} B_\mu + \cos\theta_{\rm{W}}W^{0}_\mu,\\
+W^{\pm}_\mu & = \frac{1}{\sqrt{2}}(W^{1}_\mu \mp iW^{2}_\mu),
+\end{split}
+\end{equation}
+
+where the only massless boson upon the spontaneous symmetry breaking $SU(2)_L \otimes U(1)_Y\rightarrow U(1)_{\rm{em}}$ is the photon $A_\mu$, correponding to the boson of the $U(1)_{\rm{em}}$ group.
+\subsection{Complete Picture of the Standard Model}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:SM_SM}
+The Standard Model, in its current form is given by the gauge groups 
+\begin{equation}
+    SU(3)_C \otimes SU(2)_L \otimes U(1)_Y,
+\end{equation}
+where $SU(3)_C$ and $SU(2)_L \otimes U(1)_Y$ correspond to the strong and electroweak groups respectively. Below the electroweak scale, of the order $10^{2}\,$GeV, the $SU(2)_L \otimes U(1)_Y$ groups break down to $U(1)_{em}$ via spontaneous symmetry breaking, i.e. 
+
+\begin{equation}
+SU(3)_C \otimes SU(2)_L \otimes U(1)_Y \rightarrow SU(3)_C \otimes U(1)_{em}.
+\end{equation}
+
+Below this scale, the massless $W_{1,2,3}$ and $B$ bosons associated with the electroweak group form superpositions to generate the massive $Z$, $W^{\pm}$ and $\gamma$ bosons.
+
+The fermionic content of the Standard Model is represented as
+\begin{equation}
+\begin{split}
+\{\bm{3},\bm{2},\frac{1}{6}\} &\leftrightarrow \left( 
+\begin{matrix}
+u_1 & u_2 & u_3 \\
+d_1 & d_2 & d_3
+\end{matrix}
+\right)^i,  \{\bm{1},\bm{2},-\frac{1}{2}\} \leftrightarrow \left( 
+\begin{matrix}
+v_l \\
+l
+\end{matrix}\right)^i \\
+\{ \overline{\bm{3}},\bm{1},-\frac{2}{3} \}&\leftrightarrow \left(
+\begin{matrix}
+u^{c}_1 & u^{c}_{2} & u^{c}_{3}
+\end{matrix}\right)^i, \{ \overline{\bm{3}}, \bm{1}, \frac{1}{3} \}\leftrightarrow \left(
+\begin{matrix}
+d^{c}_1 & d^{c}_2 & d^{c}_3 
+\end{matrix}\right)^i \\
+\{ \bm{1}, \bm{1}, 1 \} &\leftrightarrow (l^c),
+\end{split}
+\end{equation}
+where the index $i$ indicates the fermionic generation (i.e. $u^1 = u$, $u^2 = c$, $u^3 = t$ and so on), the subscript $1,2,3$ refers to the colour charge (equivalent to $r,g,b$) of the quarks, and $c$ indicates charge conjugation. The first index in the bracket, $\bm{3},\overline{\bm{3}}$ and $\bm{1}$ refer to the fundamental triplet, its conjugate, and the fundamental singlet represenations of $SU(3)_C$; $\bm{2}$ and $\bm{1}$ in the second index are the fundamental doublet and singlet represenations of $SU(2)_L$ respectively; the third index is the weak hypercharge of the $U(1)$ representation.
+
+\section{Grand Unified Theories}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT}
+A Grand Unified Theory is a model in which the gauge groups of the Standard Model are embedded in a single, larger Lie group which provides a unified description of the forces and particle interactions. It will be found that it is possible to come up with a framework that describes the Standard Model in a single, unifying gauge group such as $SU(5)$; however, there has currently been no experimental evidence to support the claim that nature is described by a unified gauge group. Despite this, GUTs provide a possible solution to many of the questions left unanswered by the Standard Model and are seen as a more elegant description of nature, leading to a wide range of proposed models unifying the gauge groups of nature. This section will discuss some of the theoretical background to Grand Unified Theories and the ongoing work in this field.
+Section \ref{sec:GUT_SMShortcomings} covers some of the shortcomings of the Standard Model, and the motivation behind building a Grand Unified Theory. Section \ref{sec:GUT_SUSYIntro} provides a qualitative introduction to supersymmetry, and how it can fit in to GUT models. Section \ref{sec:GUT_SU5} discusses $SU(5)$ GUT models. Section \ref{sec:GUT_PS} covers the Pati-Salam model, which is often used as an intermediate gauge group in GUT models. Section \ref{sec:GUT_SO10} introduces GUT models based on the $SO(10)$ gauge group, while Section \ref{sec:GUT_E6} covers the exceptional group $E(6)$. Finally, Section \ref{sec:GUT_Summary} provides a brief summary of the topics covered in this section.
+
+\subsection{Shortcomings of the Standard Model and Motivation for GUTs}%%%%%%%%%%%
+\label{sec:GUT_SMShortcomings}
+While the Standard Model has been incredibly successful in explaining experimental results, it is far from a complete picture of nature and has a number of shortcomings that are felt should not be present in a final description of matter. While not ``problems'' in the conventional sense, these are often fine-tuned parameters or seemingly arbitrary conditions.
+
+One of the more immediately noticeable shortcomings of the Standard Model is the number of free parameters. The value of these parameters do not arise from the predictions of the Standard Model itself, but instead are fixed experimentally. There are a currently total of 25 free parameters in the Standard Model; the masses of the 6 quarks, the 6 lepton masses, 2 boson masses ($m_Z$ and $m_H$), 4 CKM matrix parameters, 4 PMNS matrix parameters, and the 3 fundamental coupling constants $e$, $g$ and $g_s$. With no theoretical basis for these quantities in the Standard Model, the value the parameters take seem to be arbitrary rather than the result of an underlying physical equation. This lends to the argument that the Standard Model cannot be the `final theory' of particle physics but is instead a low energy approximation of a more fundamental set of equations from which the Standard Model is derived, similar to how the classical equations of motion can be retrieved from the Taylor series of the relativistic energy equation.
+
+In addition, the Standard Model as it stands does not include gravity; while the existence of a gauge boson for the force, the graviton, has been proposed there is no complete theoretical framework that incorporates gravitons due to renormalisation problems. Due to the lack of the most recognisable force in the model, the Standard model as it stands cannot be complete. While a Grand Unified Theory does not include gravity, unifying 3 of the 4 four fundamental forces is considered to be a stepping stone to a theory of everything that merges all 4 forces, and extensions incorporating supersymmetry also have the potential to eventually embed gravity \cite{SUSYGravity}.
+
+Finally, one of the strongest motivations for GUT models is that of coupling unification, which will be discussed in more depth in Section \ref{sec:CouplingUnification}. The coupling parameters associated with each of the Standard Model gauge groups are not constant but instead vary as a function of energy. These coupling parameters miss each other slightly at higher energies under the Standard Model, however if nature was to be described by a larger gauge group that broke down to the SM gauge groups at lower energies, the coupling constants could in fact converge, implying a unified force at higher energies. 
+
+\subsection{Introduction to Supersymmetry}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT_SUSYIntro}
+While not all supersymmetric models involve a unified gauge group, many GUT models have SUSY components, therefore it is important to introduce the topic before discussing various grand unified models. This section aims to provide a qualitative overview of supersymmtery; a more involved introduction to SUSY can be found in \cite{SUSYPrimer}.
+
+Supersymmetry involves introducing a superpartner, or \textit{sparticle}, for each particle in the Standard Model. Each fermion has a corresponding spin zero superpartner boson, rather misleadingly known as a sfermion, and each gauge boson has a corresponding fermion with spin differing by $\frac{1}{2}$, known as a \textit{gaugino}. An unbroken supersymmetry would predict all superpartners having the same mass as their corresponding partner, however, as these superpartners are not observed in nature this is not the case. Any working SUSY model must be broken, therefore.
+
+% LHC MSSM https://arxiv.org/pdf/1106.2317.pdf
+One of the driving motivations for introducing supersymmetry in unified models was that it is able to provide solutions to several of the problems that the Standard Model does not adress. Arguably, one of the most important was the \textit{hierarchy problem}. It was shown by Weinberg \cite{HierarchyProblem1} and Gildener \cite{HierarchyProblem2} that higher order loops occuring at larger energy scales pushed the mass of the Higgs towards the Planck energy scale unless there was a large amount of fine tuning of physical parameters such as the bare mass of the higgs. In \cite{FineTuningEqn}, Barbieri and Giudice defined the level of fine tuning as
+
+\begin{equation}
+\label{eqn:fineTuning}
+\Delta = \left\vert \frac{a_i}{O} \frac{\partial O(a_i)}{\partial a_i} \right\vert,
+\end{equation}
+where $a_i$ is a parameter that is adjusted, and $O$ is some observable quantity. Barbierri and Giudice set set the $a_i$ relative change of the parameter $\frac{\partial a_i}{a_i}$ at $1$\%, meaning $\Delta$ represents the percentage change in $O$ given a $1$\% change in $a_i$, and argued that a value of $\Delta>10$ was considered `fine-tuned'. In other words, $\Delta$ is a measure of how sensitive an observable qunatity is to a small change in the parameter of a theory. Extending this, the fine-tuning level of a theory is often defined as the largest value $\Delta_i$ for a set of parameters $a_i$. Using this definition, the Standard Model has a level of fine tuning of around $10^{14}$ \cite{SO10_2}. Some SUSY extensions, on the other hand, reduce this down below $10$ \cite{FineTuningEqn}, however this places restrictions on the upper bound of sparticle masses \cite{LowESUSY}, meaning they are more easily excluded.
+
+Through the introduction of superymmetry, superpartner corrections could cancel out with their partners at higher orders and solve the hierarchy problem to a large extent \cite{SUSYHierarchyProblem}. Without components such as SUSY, it is necessary to accept very high levels of fine tuning to keep models constrained to experimental observations, which is often considered `unnatural'. This \textit{naturalness} is more of an appeal to the underlying `beauty' of a model rather than one grounded in theory, however it has been a central component of theoretical physics over the past half-century \cite{Naturalness}.
+
+Natural SUSY follows this doctrine, and are a class of supersymmetric models in which the fine-tuning is as mild as possible \cite{NaturalSUSY} to avoid the requirements of fine tuning found in the MSSM.
+
+There are a number of arguments that suggest that supersymmetry should be observed in the region of $1-2\,$TeV; these include having $M_{SUSY}$ at lower energies to further reduce fine tuning, or dimensional analysis arguments. These are discussed in more detail in \cite{SUSYTEV1},\cite{SUSYPrimer} and references therein.
+
+Currently however, there is currently no experimental evidence for SUSY, and the experiments at the LHC have found no observations of supersymmetric processes around the TeV scale \cite{SUSYSearch1}, though natural SUSY is not yet excluded by experimental constraints \cite{NaturalSUSYConstraints}. While it is difficult, if not impossible, to rule out all variations of SUSY, the non observation of SUSY processes arguably weakens the case for low energy SUSY and indicates that supersymmetry may not exist in nature as we currently understand it. Nethertheless, supersymmetry remains an attractive extension to the Standard Model, and will likely continue to be a mainstay of theoretical models for the forseeable future.
+
+\subsection{$\bm{SU(5)}$}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT_SU5}
+In 1974 Georgi and Glashow introduced the first GUT model \cite{SU5GeorgiGlashow}.
+The Georgi-Glashow model combines the Standard Model gauge groups into a single group $SU(5)$. It is the simplest Lie group that contains the Standard Model and breaks down via the pattern
+\begin{equation}
+SU(5)\rightarrow SU(3)_C \otimes SU(2)_L \otimes U(1)_Y \rightarrow SU(3)_C \otimes U(1)_{em}.
+\end{equation}
+
+As shown in \cite{GUTPHD}, each family of fermions can be embedded in the representations 
+
+\begin{equation}
+\overline{\bm{5}} \leftrightarrow\left(
+\begin{matrix}
+    d_{1}^{c} \\
+    d_{2}^{c} \\
+    d_{3}^{c} \\
+    e\\
+    -\nu
+\end{matrix}\right)_L,
+\bm{10}\leftrightarrow\left(
+\begin{matrix}
+0 & u_{3}^{c} & -u_{2}^{c} & u_{1} & d_{1} \\
+-u_{3}^{c} & 0 & u_{1}^{c} & u_{2} & d_{2} \\
+u_{2}^{c} & -u_{1}^{c} & 0 & u_{3} & d_{3} \\
+-u_1 & -u_2 & -u_3 & 0    & e^c    \\
+-d_1 & -d_2 & -d_3 & -e^c & 0
+\end{matrix}\right)_L.
+\end{equation}
+
+
+There are 24 gauge bosons under $SU(5)$, all massless at the energy scale $E_{\rm{GUT}}$. 12 of the bosons, corresponding to the gauge fields introduced in $SU(5)$, become massive under spontaneous symmetry breaking below the GUT energy scale. The remaining 12 belonging to Standard Model gauge groups (8 gluons,$W_{1,2,3}$ and $B$) are massless down to the ElectroWeak scale at around $10^2\,$GeV, below which the 3 gauge bosons corresponding to the weak force, $Z$ and $W^{\pm}$, becoming massive leaving the gluons and photons massless at low energies.
+
+The Georgi-Glashow model was one of the earliest GUTs and the gauge couplings were initially believed to converge under $SU(5)$ at around $10^{15}\,$GeV. This was one of the initial pushes for the Kamioka NDE and IMB detectors to search for proton decay. However, as the measurements of the input parameters became more precise it was evident that they would not in fact converge but narrowly miss each other. They do, however, unify under the supersymmmetric $SU(5)$ GUT \cite{SUSYSU5CouplingUnification}. The coupling unification is discussed in more detail in Section \ref{sec:CouplingUnification}.
+
+$SU(5)$ was one of the first extensions to the Standard Model to predict a finite lifetime of the proton due to proton decay, which will be covered in more depth in Section \ref{sec:GUTPDTh}. $B$ violating processes, such as proton decay, fulfil the first of Sakharov's conditions for baryogenesis \cite{SakharovConditions}, and could ultimately help explain the matter-antimatter asymmetry in the universe. Given that the fundamental aim of GUTs are to provide possible explanations to problems not addressed by the Standard Model, the prediction of proton decay is a arguably a positive feature; despite this, proton decay ultimately proves to be the undoing of the minimal $SU(5)$ model as the predicted lifetime is not consistent with experimental results for proton decay searches, which will be covered more in Section \ref{sec:GUTExp_PD}. Furthermore, it was shown in \cite{GUTSphaleron} that $SU(5)$ is not in fact able to generate baryon asymmetry, due to $B-L$ conserving decays being \textit{washed out}. However, it will be seen later on that $SU(5)$ \textit{is} capable of generating baryon asymmetry.
+
+Despite this, it has been noted as late as 2010 that minimal SUSY $SU(5)$ models  cannot yet be ruled out by experimental evidence \cite{SuperK2014} due to the impact of the introduction of supersymmteric particles and higher order corrections on the unification energy\cite{SUSYSU5Decay}, despite claims to the contrary \cite{PDMinimalSUSYSU5}. The unification energy scale is shifted from around $10^{15}\,$GeV to the order of $10^{16}\,$GeV; this reduces the decay rate by a factor of 4. In the later sections it will be found that the current experimental limit on proton decay lies at $5.9\times10^{33}$ years for the decay mode $p\rightarrow \overline{\nu}K^+$ which is favoured by SUSY $SU(5)$, which is not yet at the level to exclude SUSY $SU(5)$.
+
+Unified gauge groups also such as $SU(5)$ also predict magnetic monopoles, known as 't Hooft–Polyakov monopoles \cite{GUTMonopoles}. As the predicted density of these monopoles was predicted to be of the order of $10^{-19}\,\rm{cm}^{-3}$ \cite{GUTMonopoleDensity}, the lack of experimental observation of monopoles could be construed as a argument against unified theories. However, by introducing a period of cosmic inflation in the early universe this problem can be avoided \cite{InflationMonopole}.
+
+The Georgi-Glashow model generated a lot of initial excitement, as the prospect of unifying the Standard Model gauge tranformations into a single Lie group was particularly appealing. However, $SU(5)$ suffers from a number of undesirable features, most notably that it does not match experimental results.
+In addition, the $B-L$ conservation of $SU(5)$ has no basis in local gauge invariance \cite{GUTBaryonAsym}; considering local gauge invariance is one of the underlying principles that has guided theoretical physics over the past half century, this is often considered a negative feature. 
+While the minimal $SU(5)$ model has excluded, the supersymmetric extension to $SU(5)$ still has not been fully ruled out and fixes some issues such as coupling unification. For these reasons among others, larger lie groups are generally favoured in place of $SU(5)$.
+One of early `successes' of the Georgi-Glashow model was the prediction of the weak mixing angle $\sin^2\theta_{\rm{W}}$  to be $0.22$\cite{SU5WeakMixing}; while this was within experimental bounds in the late 1970s, it is not precise enough to be considered evidence in favour of the minimal $SU(5)$. It therefore seems that $SU(5)$ was disappointly close to being a correct unified description of the Standard Model gauge groups- however, it may be that nature has embedded $SU(5)$ as part of a larger symmetry. Despite this, $SU(5)$ is considered an elegant, if incomplete and incorrect, solution to the idea of unification.
+
+\subsection{Pati-Salam Model}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT_PS}
+%https://arxiv.org/pdf/1103.3491v1.pdf
+%http://cds.cern.ch/record/608183/files/0303055.pdf
+%http://math.ucr.edu/~huerta/guts/node18.html
+The Pati-Salam model \cite{PatiSalam} is described by the gauge groups $SU(4)_C\otimes SU(2)_L\otimes SU(2)_R$. While only considered a partial unified theory, is often embedded into larger Lie groups such as $SO(10)$. The Pati-Salam model extends the Standard Model by considering leptons as a fourth colour in the $SU(4)_C$. The fundamental representation of this model is given by
+\begin{equation}
+\{\bm{4},\bm{2},\bm{1}\} \leftrightarrow 
+\left(\begin{matrix}
+u_1 & u_2 & u_3 & \nu \\
+d_1 & d_2 & d_3 & e
+\end{matrix}\right).
+\end{equation}
+
+In 1998, the SuperK collaboration published evidence of neutrino oscillations\cite{NeutrinoOscillations}. It was noted in \cite{SUSYSO10}  that the Pati-Salam Model's predictions for the oscillations of neutrinos fit well with observations \cite{PSVOsc} and the low neutrino masses this implies \cite{PatiSalam}. However, some variations of the model such as in \cite{PSVOscOrig} prevent the decay of protons. As baryon number violation is one of Sakharov's conditions for baryogenesis \cite{SakharovConditions}, $B$ violating processes such as proton decay are generally seen as indicative of a model's ability to explain phenomena beyond the Standard Model such as the dominance of matter.
+
+As noted in \cite{SUSYSO10NeutrinoMixing}, a consequence of the $SU(4)_C$ gauge group is that it can lead to the lepton mixing angles, the angles $\theta_{ij}$ parameterising the PMNS matrix, being equal to the 3 mixing angles of the quark CKM matrix. As these predictions does not correlate to what is observed in nature, it is neccessary to impose further constraints and assumptions, such as those discussed in \cite{SO10Mixing1} and \cite{SO10Mixing2}. However, as pointed out by the authors of \cite{SUSYSO10NeutrinoMixing}, if a model containing the Pati-Salam group is ruled out, it is no longer clear if this indicates the assumptions or the underlying choice of gauge group is at fault.
+
+\subsection{$\bm{SO(10)}$}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%http://cds.cern.ch/record/608183/files/0303055.pdf
+\label{sec:GUT_SO10}
+$SO(10)$ in its fundamental respresenation corresponds to the $10\times10$ special orthogonal matrix. The dimensions of an $SO(n)$ group is equal to $\frac{n(n-1)}{2}$, giving a total of 45 generators and gauge bosons for the group.
+
+$SO(10)$ GUT groups are ultimately broken down to $SU(3)\otimes SU(2)\otimes U(1)$ at lower energies, however there may be multiple intermediate symmetries as shown in Figure (\ref{fig:SO10}).
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{images/SO(10)SymBreaking.jpg}
+    \caption{The possible symmetry breaking patterns for SO(10). From \cite{SO10SymFig}\label{fig:SO10}}
+\end{figure}
+
+
+
+$SO(10)$ has certain advantages over $SU(5)$; for example all fermions of one generation can be embedded in the $\bm{16}$ spinor representation, which contains the irreps $\overline{\bm{5}}$ and $\bm{10}$ from $SU(5)$, and allows all quantum numbers of a generation of fermions to be reproduced \cite{SO10_2}. The three families of fermions can therefore fit neatly into the $\bm{16}$. $\bm{16}$ can contain along with the Standard Model particles, right handed neutrinos \cite{SO10_1}\cite{SO10_2}. 
+One possible choice, such as that in \cite{GUTPHD}, embeds these fermions as
+
+\begin{equation}
+\bm{16}_i = \{u^{c}_1,d^{c}_1,d_1,u_1,\nu^c,e^c,d_2,u_2,u^{c}_2,d^{c}_2,d_3,u_3,u^{c}_3,d^{c}_c,e,\nu\}^{i}_L.
+\end{equation}
+
+Right handed neutrinos are hypothetical particles that are a necessary component of the Seesaw mechanism \cite{SeesawMechanism}, the proposed model to explain light neutrino masses and neutrino oscillations. They can also potentially explain other phenomena that are not answered by the Standard Model, such as possible dark matter candidates \cite{RHNeutrino}. This is arguably one of the most attractive qualities of the $SO(10)$ gauge group.
+
+Furthermore, it has been shown in \cite{SO10BaryonAsym} as recently as 2012 that $SO(10)$ models, unlike $SU(5)$, are capable of generating baryon asymmetry through the decay of GUT gauge bosons on the mass scale of $M_X$. This asymmetry is shown to be strongly linked to neutrino oscillation parameters such as the PMNS mixing angles, and are able to produce baryon asymmtery compatible with experimental and cosmological observations. These results are reproducable in a wide range of different SUSY and non-SUSY $SO(10)$ models.
+
+Despite the number of possible non-supersymmetric $SO(10)$ representations (up to dimension $\bm{210}$), only two models are found to survive once certain constraints are applied \cite{SO10_UnificationDM}. These constriants include whether the models can give appropriate masses for light neutrinos via the seesaw mechanism, and a predicted proton decay lifetime consistent with experimental limits.
+
+The two surviving breaking patterns for non-SUSY $SO(10)$ are via $SU(4)_c \otimes SU(2)_L \otimes SU(2)_R\otimes D$ and $SU(4)_C \otimes SU(2)_L \otimes SU(2)_R$. These will be discussed in this section, along with a supersymmetric $SO(10)$ model.
+
+\subsubsection{Minimal non-SUSY $\bm{SO(10)}$ Breaking via $\bm{SU(4)_c \otimes SU(2)_L \otimes SU(2)_R \otimes D}$}
+\label{sec:GUT_SO10_1}
+
+The minimal, nonsupersymmetric $SO(10)$ GUT model in \cite{SO10_1} follows the first of the two non-SUSY $SO(10)$ breaking patterns found to survive the constraints in \cite{SO10_UnificationDM}. The model is described via the pattern
+\begin{equation}
+SO(10)\rightarrow SU(4)_c \otimes SU(2)_L \otimes SU(2)_R \otimes D \rightarrow SU(3)_C\otimes SU(2)_L \otimes U(1)_Y.
+\end{equation}
+Here $SU(4)_c \otimes SU(2)_L \otimes SU(2)_R\otimes D$ is the Pati-Salam model with D parity\cite{DParity}, which is a symmetry which behaves similar to the charge conjugation operator for fermions. The intermediate energy scale is of the order of $10^{13}-10^{14}\,$GeV.
+The model predicts proton lifetimes of the order of $10^{35}$ years, which has not been excluded by the Super-K results but should be within range of the next generation of experimental results on proton decay. Threshold corrections, however, are required to increase the proton lifetime outside of the excluded region; these are terms in effective field theories, which are approximation so more complete theories that are valid in certain regimes. 
+Unlike the non-SUSY $SU(5)$, gauge coupling unification is achieved in Figure (\ref{fig:so10Coupling}), at a scale of around $10^{16}\,$GeV, albeit with a moderate level of fine tuning of GUT gauge boson masses and coupling parameters. The model also solves the strong CP problem and introduces a possible dark matter candidate with the axion at a predicted mass between $(8-175)\,\mu$eV, which is compatible with the current experimental and astronomical limits on the axion mass \cite{AxionMass}. The intermediate mass scale is of the right order for a right handed neutrino to explain the light neutrino masses.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{images/so10Unification.jpg}
+    \caption{Coupling unification for the minimal, non-SUSY SO(10) mode in \cite{SO10_1}. Discontinuities are due to threshold corrections.\label{fig:so10Coupling}}
+\end{figure}
+
+Overall, the model describing a minimal, non-supersymmetric $SO(10)$ breaking via the Pati-Salam pattern solves many of the issues of $SU(5)$, as well as providing a possible answer to some of the questions going beyond the scope of the Standard Model. The absence of supersymmetry in this model also avoids certain possibly uncomfortable questions about the non-observation of supersymmetric processes at CERN. The predictions made by the model are consistent with current experimental limits on the proton lifetime and axion mass, and should be within reach of the next generation of experiments. This model is also able to generate baryon asymmetry as described in \cite{SO10BaryonAsym}.
+Therefore, non-supersymmetric $SO(10)$ GUTs can in fact posses many of the attractive qualities  of their SUSY counterparts, such as gauge unification and dark matter candidates. This is discussed more in \cite{SO10_UnificationDM}. This model in particular is arguably a very strong candidate for a GUT realised in nature.
+
+
+\subsubsection{Minimal Non-SUSY $\bm{SO(10)}$ Breaking via $\bm{SU(4)_c \otimes SU(2)_L \otimes SU(2)_R}$}
+\label{sec:GUT_SO10_2}
+The non-supersymmetric $SO(10)$ model in \cite{SO10_2} breaks down to the Standard Model via the pattern
+\begin{equation}
+SO(10)\rightarrow SU(4)_c \otimes SU(2)_L \otimes SU(2)_R  \rightarrow SU(3)_C\otimes SU(2)_L \otimes U(1)_Y,
+\end{equation}
+where the intermediate Pati-Salam energy scale $M_{\rm{PS}}$ is of the order $10^{11}\,$GeV. This is the second of the two breaking patterns found to survive the constraints in \cite{SO10_UnificationDM}. The model predicts a proton lifetime of $5\times10^{36}\,$years, and is compatible with all experimental limits, albeit at the expense of a large amount of fine tuning in theoretical variables such as the beta function parameters (discussed in Section \ref{sec:CouplingUnification}). This model has the potential to solve many of the unanswered questions left by the Standard Model that are covered by the previous case, without necessarily having to build a model a model from the ground up to avoid the problem of fine tuning.
+
+The authors make the case that the hierarchy problem, that of naturalness, is more of a conceptual problem rather than a theoretical one. One potential solution to the issue of fine tuning is that of the anthropic principle; there may exist an infinite number of universes, each with a different set of initial conditions, and apparent fine tuning of nature is selection bias, and merely a consequence of intelligent life existing in the universe. 
+
+There has been a long history of anthropic principles being applied to cosmology. Dicke in 1961 argued that the age of the universe as seen by a biological observed is restricted \cite{DickeManUniverse}; a sentient observer cannot exist without sufficient time for stars to form and carbon-12 to fuse together, and cannot observe the universe after main sequence stars have formed white dwarfs and planetary systems no longer exist. 
+
+Weinberg extended this idea to the cosmological constant problem, the discrepency between the small observed value of the vacuum energy density and the predicted value from quantum field theory, which is around $10^{120}$ times larger, using the bounds that allow for the coniditions for life as the range of values that the vacuum expectation value can take.
+
+As discussed in \cite{AnthropicResponse}, this is obviously an unfalsifiable position. Care should be taken when applying philosophical conjecture to any model, however it demonstrates that the hierarchy problem does not necessarily have to be considered an issue. By removing one of the main arguments for supersymmetry, the ``failed'' criterion of naturalness can be avoided, along with the non-observation of supersymmetric processes at the LHC.
+While the model is intended more as a reference case than a full candidate for a unified gauge group in nature, it is an example of a fine tuned model that is able to account for all current experimental bounds as well as potentially explain various phenomena beyond the Standard Model.
+
+\subsubsection{SUSY $\bm{SO(10)}$}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT_SO10_3}
+
+The $SO(10)$ model in \cite{SUSYSO10} provides a supersymmetric alternative to the models already discussed in this subsection, breaking via the same pattern as that described in Subsection (\ref{sec:GUT_SO10_2})- that is, via the Pati-Salam intermediate symmetry. However, the underlying philosophy between the two approaches to model building is markedly different. Where  the authors of \cite{SO10_2} used large levels of fine tuning to construct a model consistent with experimental results, a standard supersymmetric approach constrain the model such that the fine tuning value from Equation (\ref{eqn:fineTuning}) do not exceed a predefined acceptable limit. 
+
+The model's predictions for the proton lifetime is consistent with current experimental limits, and provides a solution to the \textit{doublet-triplet problem}, related to the Higgs weak doublet from $SU(2)$ and colour triplet adversely affecting gauge coupling unification and proton, which is discussed further in \cite{DTProblem}.
+
+An important, if somewhat unexpected, prediction of this model is that the lower experimental limit on the $p\rightarrow \overline{\nu} K^+$ partial lifetime provides a theoretical upper limit for the $p\rightarrow e^+ \pi^0$ partial proton lifetime. Unlike many other GUT models covered in this review, which predict the approximate order of the proton lifetime, this model provides much more testable predictions. The theoretical upper bound for the $p\rightarrow e^+ \pi^0$ decay mode is calculated to be $5.3\times10^{34}\,$years, putting it well within reach of the next generation of proton decay searches.
+Furthermore, the model requires a supersymmetric mass scale in the TeV region; it therefore may be possible to exclude this method if low energy SUSY processes are not discovered at the LHC. 
+
+The model is capable of solving a wide range of problems that exist beyond the Standard Model, and is consistent with current experimental limits on proton decau. It is also less prone to the issues that affect other SUSY GUT models. Furthermore, the possibility of eventually embedding gravity in a Theory of Everything make SUSY $SO(10)$ GUTs like the model described here a strong candidate for a GUT realised in nautre, notwithstanding the potential exclusion of low energy supersymmmetry at the LHC.
+
+\begin{figure}
+    \centering
+    \label{fig:SUSYSO10Coupling}
+    \includegraphics[scale=0.5]{images/SUSYSO10Unification.jpg}
+    \caption{Gauge coupling unification for the supersymmetric SO(10) model in \cite{SUSYSO10}. Threshold corrections are found to be much milder than the model in \cite{SO10_2}.}
+\end{figure}
+
+
+\subsection{$E(6)$}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT_E6}
+%https://arxiv.org/pdf/1308.5874.pdf
+%https://books.google.co.uk/books?id=g8QRDAAAQBAJ&pg=PA248&lpg=PA248&dq=16+spinor+representation+so(10)&source=bl&ots=s5Whp07y58&sig=xYl51ngjw79BWUQ9rGmTFRkYCh8&hl=en&sa=X&ved=0ahUKEwiVrdKLvaHQAhWG6xoKHbTwAtcQ6AEIUzAJ#v=onepage&q=16%20spinor%20representation%20so(10)&f=false
+
+% eg  D. London and J. L. Rosner,Extra gauge bosons in E6, Phys. Rev. D 34 (1986) 15301546
+% R. W. Robinett and J. L. Rosner,Minimally extended electroweak gauge theories in SO(10) and E6,AIP Conf. Proc. 99 (1983) 193201.
+%  P. Langacker,The Physics of Heavy Z Gauge Bosons, Rev. Mod. Phys 81 (2009) 11991228
+
+For the sake of brevity, and as some of the content is beyond the scope of this review, $E_6$ GUT models will not be fully explored to the same extent as $SU(5)$ and $SO(10)$. However, it is still important to introduce the exceptional group $E_6$. A more detailed introduction to $E_6$ can be found in Chapter 8.5 of \cite{E6TextBook}.
+
+As well as being a potential GUT gauge group capable of embedding $SO(10)$ and $SU(5)$ into it \cite{E6ContainSO10}, is it a common component of theoretical models that go beyond SUSY, for example the superstring GUT model in \cite{E6String}. However, $E_6$ models contain exotic fermions in the fundamental representation \cite{E6TextBook}, the absence of which must be explained.
+
+If nature is found to be described by a GUT gauge group, attention will then likely turn to forming a Theory of Everything that will include gravity to unify the four fundamental forces of nature. At present, string theory variations provide the possibility of eventually incorporating a successful description of gravity. It may be the case that the Standard Model is unified by a single gauge group such as $SO(10)$	at an energy scale of $E_{GUT}$, which in turn could be unified as part of a larger $E_6$ gauge group at the Planck energy scale. However, given that there still exists no experimental evidence for GUT models, this is purely speculation.
+
+\subsection{GUT Group Summary}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUT_Summary}
+
+Grand Unified Theories, or GUTs, are gauge groups that attempt to unify the symmetries of the Standard Model in to a single gauge group. GUTs potential to explain various phenomena not accounted for by the Standard Model, such as baryon asymmetry, dark matter and neutrino oscillations. 
+There are several candidates for a unified gauge group, with multiple intermediate symmetries. 
+
+$SU(5)$ is the smallest Lie group able to contain the Standard Model. Known as the Georgi-Glashow Model, it was the first attempt at a unified description of the Standard Model gauge groups. $SU(5)$, along with most other GUT models, predicts a finite lifetime of the proton. Experimental results, such as measurements of the weak mixing angle and proton decay, have ruled out non-supersymmetric versions of $SU(5)$, however some SUSY extensions still lie outside of the excluded region for predicted proton lifetime. Despite this, larger Lie groups are often favoured over $SU(5)$.
+
+The special orthogonal group $SO(10)$ is in a good position to explain various beyond the Standard Model phenomena. Due to its $\bm{16}$ irrep, $SO(10)$ is able to accomodate the Standard Model particles as well as right handed neutrinos. This is an appealing feature as right handed neutrinos are a required for the Seesaw mechanism to explain neutrino mass, and are possible dark matter candidates. Minimal $SO(10)$ models are also able to produce baryon asymmetry compatible with current observations. However, it has been noted that only two minimal, non-SUSY $SO(10)$ models are not excluded by experimental and astronomical constraints, these being those breaking by the Pati-Salam pattern with and without $D$ parity. Despite this, $SO(10)$ is still a strong candidate for a unified description of the Standard Model gauge groups, and SUSY extensions to $SO(10)$ provide a potential route to eventually encorporating gravity.
+
+\section{Gauge Coupling Unification}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:CouplingUnification}
+The strength of the forces related to the $U(1)_Y$, $SU(2)_L$ and $SU(3)_C$ gauge groups can be desribed by the coupling parameters $\alpha_1$, $\alpha_2$ and $\alpha_3$ respectively. Under the description of the Standard Model, the couplings slightly miss each other at higher energies. However, if the particle interactions in nature were described by a higher gauge group that breaks down to the Standard Model at lower energies, it is possible for the running coupling parameters to meet. This is known as \textit{coupling unification}, and is one of the primary motivations behind GUTs.
+
+The values of the parameters used in this section are calculated in \cite{BetaFunction}.
+
+
+\noindent The evolution of a coupling parameter between two energy scales $\mu$ and $\mu_0$ can be expressed as
+\begin{equation}
+\alpha^{-1}_{i}(\mu) = \alpha^{-1}_{i}(\mu_0) - \frac{b_i}{2\pi}\ln\left(\frac{\mu}{\mu_0}\right),
+\end{equation}
+where the coefficient $b_i$ depends on the contributions of fermion and boson loops to the gauge boson's self energy, and encodes the coupling parameter's dependence on energy at a certain energy scale..
+
+The values of the $\beta$ coeffecients for the Standard Model are given by
+\begin{equation}
+b_1 = 4.1,\,b_2 = \frac{-19}{6},\,b_3 = -7,
+\end{equation}
+corresponding to the parameters for the $U(1)_Y$, $SU(2)_L$ and $SU(3)_C$ gauge couplings respectively.
+
+
+The values of the running gauge coupling constants at the electroweak scale $\mathcal{O}(M_Z)\approx10^2\,$ GeV are equal to 
+\begin{equation}
+\alpha_1(M_Z) = 0.016946,\,\alpha_2(M_Z)=0.033812,\,\alpha_3(M_Z) = 0.1176.
+\end{equation}
+
+Using these, the running of these coupling constants in the Standard Model can been seen in Figure (\ref{fig:SMCoupling}). It is found that the coupling parameters slightly miss each other in the region of $10^{15}\,$GeV.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/SMCouplings.png}
+    \caption{The running of the gauge couplings in the Standard Model is plotted.\label{fig:SMCoupling}}
+\end{figure}
+
+This is then extended to a GUT case such as the non-SUSY $SO(10)$ model described in Subsection \ref{sec:GUT_SO10_2} with the breaking pattern 
+\begin{equation}
+SO(10)\rightarrow SU(4)_C \otimes SU(2)_L \otimes \rightarrow SU(2)_R \rightarrow SU(3)_C \otimes SU(2).
+\end{equation}
+
+There are now 3 intermediate couplings, $\alpha_{4C}$, $\alpha'_{2L}$ and $\alpha_{2R}$, corresponding to the $SU(4)_C$, $SU(2)_L$ and $SU(2)_R$ of the intermediate Pati-Salam gauge groups. As there are new processes and particles available at the intermediate scales, the $\beta$ coefficients $b_i$ are calculated to be
+
+\begin{equation}
+b_4 = \frac{-7}{3},\,b'_{2L} = 2,\,b_{2R} = \frac{28}{3},
+\end{equation}
+again corresponding to the parameters $SU(4)_C$, $SU(2)_L$ and $SU(2)_R$ running coupling constants.
+
+The coupling constants are subjected to the following constraints:
+
+\begin{equation}
+\begin{split}
+\alpha_{4C}(M_I) & = \alpha_{3}(M_I),\,\alpha'_{2L}(M_I) = \alpha_{2}(M_I),\\
+\alpha^{-1}_1(M_I) & = \frac{3}{5}\alpha^{-1}_{2R}(M_I) + \frac{2}{5}\alpha^{-1}_{4C}(M_I)\\
+\therefore \alpha^{-1}_{2R}(M_I) &= \frac{5}{3}\alpha^{-1}_1(M_I) - \frac{2}{3}\alpha^{-1}_{3}(M_I).
+\end{split}
+\end{equation}
+
+The first constraint is from the boundary conditions that the value of $\alpha_{4C}$ must be equal to $\alpha_{3}$ at the intermediate scale as the $SU(4)_C$ group breaks down to the $SU(3)_C$ gauge group below the intermediate energy scale. The $SU(2)_L$ symmetry is present in both the Standard Model and Pati-Salam gauge groups, and therefore at the intermediate energy scale $\alpha'_{2L} = \alpha_{2}$.
+
+By calculating the Standard Model couplings at a predicted intermediate energy scale of $M_I = 1.3\times10^{11}\,$GeV, the intermediate couplings are determined to be
+\begin{equation}
+\begin{split}
+\alpha_{4C} & = \alpha_3 = 0.03136,\, \alpha'_{2L} = \alpha_2 = 0.02491\\
+\alpha_{2R} & = 0.01843
+\end{split}
+\end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/SO10Couplings.png}
+    \caption{The Gauge Coupling Evolution for the non-SUSY SO(10) model in \cite{SO10_2} is plotted.\label{fig:SO10Coupling2}
+}
+\end{figure}
+
+The predicted running coupling for the non-SUSY $SO(10)$ is shown in Figure (\ref{fig:SO10Coupling2}), and the unification energy is found to be $1.9\times10^{16}\,$GeV with a unified coupling constant $\alpha_U \approx 0.027$. The jump between $\alpha^{-1}_1$ and $\alpha^{-1}_{2R}$ at the intermediate energy scale is because in the Pati-Salam group the generator $\alpha_1$ is the sum of two generators $\alpha_{2R}$ and $\alpha_{4C}$.
+
+Gauge coupling unification can be thought of as the reverse of spontaneous symmetry breaking; by playing the early life of the universe in reverse, as the energy scale increases, the strong and electromagnetic gauge groups unify to form the Standard Model, with these gauge groups possible unifying further to a unified force closer to the big bang.
+
+Given that any two non-parallel lines will converge at some point, an arbitrarily defined model can always be constructed such that the three gauge couplings will converge at some unification energy. However, that the three gauge couplings of the Standard Model naturally appear to direct themselves towards a similar region is an indication that there may be some underlying, fundamental symmetry governing these processes towards a unified force.
+
+\section{Experimental Constraints on GUTs}%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUTExp}
+
+As the unification scale for GUT models, $E_{GUT}$, is many orders of magnitude higher than that currently available in particle accelerators, it is not currently possible to directly observe the predicted gauge bosons associated with the unified gauge group. Therefore, it becomes necessary to rely on the predictions made by the various GUTs in order to either confirm or reject the models. 
+
+The most testable, and therefore important, prediction of the various proposed GUTs is the predicted lifetime of the proton; most GUTs introduce new bosons and symmetries that allow baryon violating processes to occur, causing the proton to become unstable, albeit with an extremely long lifetime. Searching for these decay events allows very high energy scales to be indirectly probed.
+
+Evidence for SUSY processes can potentially provide experimental support for supersymmetric GUTs, however they are unlikely to be able to exclude any SUSY GUT models by themselves. Evidence of neutrino-antineutrino oscillations at SNO, for example, could signal physics at the TeV scale rather than the GUT scale \cite{SUSYSU5MassRelations}. However, this would be a strong indication in favour of supersymmetry, providing a clear argument for SUSY GUTs over their non-SUSY counterparts.
+
+It is in fact possible to infer the constraints on GUTs through other means, such as through observation of cosmological parameters. In \cite{CosmolGUTConstr}, a lower bound on the unification energy of $10^8\,$GeV was determined by calculating that the level of expansion anisotropy required to generate  baryon asymmetry would produce a disproportionate amount of helium, tritium and deuterium to an extent that is not observed in the universe. However, it is clear that these limits are in fact far too low to provide any meaningful contribution to GUT constraints. This is reflected in the strong push for experimental searches for proton decay.
+
+Section \ref{sec:GUTPDTh} covers the theoretical motivations and background for proton decay and B violating processes, while Section \ref{sec:GUTExp_PD} covers the ongoing experimental searches for proton decay and the current limits on the lifetime of the proton.
+
+\subsection{Theoretical Motivations for Proton Decay}
+\label{sec:GUTPDTh}
+One of the gauge bosons introduced in $SU(5)$, the X boson, provides a means of baryon number violating processes such as proton decay \cite{SU5ProtonDecay}, introducing a finite lifetime of the proton. Rather than the conservation of baryon number, the quantity B-L is conserved, where L is the lepton number. The decay amplitude of this process $\mathcal{M}$ is proportional to the propagator of the interaction 
+
+\begin{equation}
+\label{eqn:protonDecayAmplitude}
+    \mathcal{M} \propto \frac{g^2 _U}{q^2 - M^2 _X}
+\end{equation}
+
+where $q$ is the four momenta of the proton, $g_U$ is unified coupling constant and the the mass of the X boson $M_X\approx E_{\rm{GUTS}}$. The GUT energy scale in the case of SU(5) is of the order $10^{15}\,$GeV. As the four momenta of the proton is many orders of magnitude smaller than the mass of the X boson, it can be neglected. The decay rate of the proton is proportional to the square of the amplitude and equal to the inverse of the proton's mean lifetime. Using dimensional analysis, the decay rate can be estimated as
+
+\begin{equation}
+\label{eqn:protonDecayRate}
+    \Gamma(p\rightarrow e^+ + \pi^0)=\frac{1}{\tau_{\rm{p}}}\propto|\mathcal{M}|^2 \approx \frac{g^4 _U}{M^4 _X}m^5 _p
+\end{equation}
+
+\begin{figure}
+    \centering
+    \label{fig:protonDecay}
+    \includegraphics[scale=0.25]{images/protonDecay.png}
+    \caption{The favoured proton decay mode for non-SUSY $SU(5)$ is $p\rightarrow e^+\pi^0$ through the emission of an X boson with a charge of $+\frac{4}{3}$.}
+\end{figure}
+
+Calculating the decay rate gives a lifetime of the order of $10^{-61}$ GeV, equivalent to $\tau_p \approx 10^{29}$ years. A complete calculation predicts the lifetime $\tau_p$ to be between $10^{29}$ and $10^{30}$ years. However, in Section \ref{sec:GUTExp_PD} it will be seen that this lifetime is not consistent with experimental results, meaning that the minimal $SU(5)$ Georgi-Glashow model is excluded. However, SUSY $SU(5)$ models increase the unification energy by a factor of 10 around $10^{16}\,$GeV through the introduction of new processes and particles. From Equation (\ref{eqn:protonDecayRate}), it can be seen that this corresponds to increasing the lifetime of the proton by a factor of $10^4$, placing the predicted SUSY $SU(5)$ proton lifetime outside of the experimentally excluded region.
+
+The decay process is shown in Figure (\ref{fig:protonDecay}).
+
+\subsection{Experimental searches for Proton Decay}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:GUTExp_PD}
+
+Super-Kamionkande is currently the most sensitive experiment in the search for evidence of proton decay. The collaboration at Super-K, as it is also known, is the combination of two previous proton decays searches, Kamiokande II and Irvine-Michigan-Brookhave (IMB) \cite {IMB}. Kamiokande II was the successor to Kamioka NDE, or `Nucleon Decay Experiment' \cite{KamiokaNDE}, and, like IMB, was initially designed to probe the lifetime of the proton through the decay $P\rightarrow e^+ \pi^0$. While neither experiment found any evidence of proton decay, the new Super-K built to study solar neutrinos had a significantly larger tank than its predecessor and allowed the study of proton decay to be simultaneously investigated.
+
+Located over 1,000m underground to minimise exposure to cosmic rays, the Super-K water Cherenkov detector is a $39.1\,$m by $41.4\,$m cylindrical stainless steel tank containing 50,000 tons of purified water \cite{SuperKSpecs} surrounded by 11,000 photomultiplier tubes. 
+When a signal has been detected by the photomultiplier tubes, the type of event detected  can be identified by analysing the through Cherenkov radiation- the rings produced by charged particles such as electrons and muons when they are decelerated in water vary, giving an indication as to the nature of the particle.
+
+One of the favoured proton decay modes for non-SUSY GUTS is via $p\rightarrow e^+ \pi^0$ . As a proton decays to a neutral pion and positron, the $\pi^0$ itself decays to two photons which in turn produce electron-positron pairs. These particles, being highly relativistic, generate Cherenkov radiation which is picked up by the photomultiplier tubes, with the event being reconstructed to confirm that a proton had indeed decayed.
+
+\begin{table}[h!t]
+\label{table:protonDecay}
+\centering
+\caption{Predicted proton lifetimes for GUT models and experimental limits \cite{HyperK}.}
+\begin{tabular}{ |c|c|c| } 
+\hline	
+Model & Decay Mode & Predicted Proton Lifetime (years)\\
+\hline
+Minimal non-SUSY $SU(5)$ & $p\rightarrow e^{+} \pi^{0}$ & $10^{29}-10^{30}$ \cite{PDMinimalSU5}\\ 
+Minimal SUSY $SU(5)$ & $p\rightarrow \overline{\nu}K^+$ & $10^{30}-10^{34}$ \cite{PDMinimalSUSYSU5}\cite{SUSYSU5Decay}\\
+Minimal non-SUSY $SO(10)$ & $p\rightarrow e^{+} \pi^{0}$ & $~10^{35}-5\times10^{36}$ \cite{SO10_1}\cite{SO10_2}\\ 
+SUSY $SO(10)$ & $p\rightarrow e^{+} \pi^{0}$ & $<5.3\times 10^{34}$ \cite{SUSYSO10}\\
+SUSY $SO(10)$ & $p\rightarrow \overline{\nu}K^+$ & $10^{32}-10^{34}$ \cite{PDSUSYSO10_1}\\
+\hline
+Experimental lower bounds & Decay Mode & Experimental Limit (years)\\
+\hline
+ & $p\rightarrow e^+ \pi^0$ & $1.6\times10^{34}$ \cite{SuperK2016} \\
+ & $p\rightarrow \overline{\nu}K^+$ & $5.9\times10^{33}$\cite{SuperK2014} \\
+ \hline
+\end{tabular}
+\end{table}
+
+In October 2016, Super-Kamiokande published the results of 19 years of Super-Kamiokande data looking for various proton decays. The data amounted to 310 kiloton years,  during which time no proton decays were detected for the $p\rightarrow e^+ \pi^0$ branch, and 2 candidates were observed for the decay branch $p\rightarrow \mu^+ \pi^0$, although this is still consistent with background rate of $0.87$ events over the period\cite{SuperK2016}. Super-K has set the lower bound of the proton's partial lifetime for the $p\rightarrow \overline{\nu}K^+$ decay branch at $5.9\times10^{33}$ years at confidence level of $90\%$ \cite{SuperK2014}, while the lifetime for the $p\rightarrow e^+ \pi^0$ decay mode has been set at lower bound of $1.6\times10^{34}$ years, also at a confidence level of $90\%$ \cite{SuperK2016}. 
+
+As seen in Table \ref{table:protonDecay}, the experimental bounds on the proton lifetime excludes the non-supersymmmetric $SU(5)$ models. Super-K is able to probe the upper bounds of supersymmteric $SO(10)$ models via the decay channel $p\rightarrow e^+ \pi^0$, however it is currently unable to exclude this region with a sufficient confidence level. Despite this, there would be a reasonable probability to observe some proton decay events as the excluded region grows closer to SUSY $SO(10)$'s upper bounds. The non-observation of any decay events for the $p\rightarrow e^+ \pi^0$ branch during the SuperK lifetime, while not at the sufficient level of statistical significance to rule out the model, is an uncomfortable question mark next to the model's standing against experimental limits.
+The minimal SUSY $SU(5)$ model has so far managed to retain a certain level of breathing room in the lower bounds from the current generation of proton decay experiments as the constraints on the $p\rightarrow \overline{\nu}K^+$ branch are less stringent. This is because the Super-K detector is less sensitive to the $p\rightarrow \overline{\nu}K^+$ decay events, as the positive kaon is not visible in water Cherenkov detectors due to its low momentum, therefore making direct observations of these events more difficult.
+
+However, the  proposed Hyper-Kamiokande experiment \cite{HyperK}, projected to begin taking data in 2025, aims to be able to probe partial lifetimes up to $10^{35}\,$years over an 8 year running period. This means it is fully able to probe the lifetimes predicted by supersymmetric $SO(10)$ and non-minimal supersymmetric $SU(5)$ models, as well as the minimal non-SUSY $SO(10)$ discussed in Section \ref{sec:GUT_SO10_1}. The non-SUSY $SO(10)$ covered in Section \ref{sec:GUT_SO10_2} likely remains out of reach of the next generation of proton decay experiments as it predicts a lifetime of the order of $5\times10^{36}\,$years. Either way, by the mid 2030s the number of viable GUT models will likely be significantly reduced if proton decay is not observed.
+
+\section{Conclusion}%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Conclusion}
+
+Gauge theories have proven to be the foundation of the theoretical development of the Standard Model over the past half-century, and have been responsible for a number of successes such as the prediction of the $W$ and $Z$ bosons and weak neutral currents.  As such, it is natural to continue this line of reasoning when attempting to further the theoretical description of nature.
+Grand Unified Theories, or GUTs, are one of the leading candidates to extend the current description of the Standard Model, and to explain various phenomena that the SM does not address, such as the origins of matter-antimatter asymmetry and the existence of dark matter. The Standard Model as it currently stands is formed by the gauge groups $SU(3)_C \otimes SU(2)_L \otimes U(1)_Y$; the fundamental aim of GUTs are to unify these symmetries into a single gauge group that breaks down to the Standard Model  at lower energies. 
+
+One of the primary motivations behind the idea of a unified gauge groups is that of gauge coupling unification; the running coupling parameters slightly miss each other at higher energies, however extensions to the Standard Model can result in these parameters converging at a certain energy scale, implying that at higher energies there may exist a single, unifying force. 
+
+There are a number of different choices for the unified gauge group on which to build a GUT model, which were discussed during the course of this review.
+$SU(5)$ was the first GUT model, being first introduced in the 1970s. It is the simplest Lie group that the Standard Model can be embedded in, and provided a number of predictions including proton decay. However, it is found that the gauge coupling parameters do not in fact meet, and the predicted lifetime of the proton is not consistent with experimental limits on proton decay. Supersymmetric $SU(5)$ models, however, are not yet excluded by experimental limits. 
+
+$SO(10)$ provides a number of improvements over $SU(5)$, and has the possibility to answer many of the unsolved issues in the Standard Model without needing the introduction of supersymmetry. One of the most appealing aspects of $SO(10)$ is the ability to embed a fermionic generation in the $\bm{16}$ representation along with a right handed neutrino. This provides a means of explaining both neutrino masses and oscillations via the Seesaw mechanism, which requires the existance of a right handed neutrino. 
+Despite the number of possible representations in $SO(10)$ (up to $\bm{210}$), it was found that only two breaking patterns survive once constraints are applied- those containing the Pati-Salam group with and without D parity as an intermediate symmetry. Despite this, the remaining minimal non-SUSY $SO(10)$ models are still arguably strong candidates for a physically realised GUT.
+Supersymmetric extensions to $SO(10)$ also provide the ability to solve a range of questions left unanswered by the Standard Model, with the introduction of SUSY providing a means to limit the amount of fine tuning required in the model as well as potentially being able to incorporate gravity in the future. However, the non-observation of supersymmetric processes at the LHC raises questions about whether supersymmetry is actually realised in nature. In addition, there are arguments put forwards that the hierarchy problem, one of the primary motivations for the development of SUSY, does not need to be considered a obstacle, thus sidestepping the issue of fine-tuning.
+
+While there is currently no experimental evidence in favour of GUTs, the next generation of proton decay searches such as the proposed Hyper-Kamiokande detector, projected to begin taking data in 2025, will be able to address the issue of proton decay at much higher limits. The expected lower bounds on proton decay accessible by Hyper-K should allow the experiment to fully probe SUSY $SU(5)$ and $SO(10)$ models, as well as a significant chunk of non-SUSY $SO(10)$, meaning that by the mid 2030s many popular GUT models may be excluded if proton decay is not observed.
+
+\bibliographystyle{unsrt}
+\bibliography{./references}
+
+\end{document}
+
